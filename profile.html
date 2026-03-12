@@ -4,226 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NEXUS GAMING - Profile</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --cyber-pink: #ff006e;
-            --cyber-blue: #00f5ff;
-            --cyber-purple: #8338ec;
-            --cyber-yellow: #ffbe0b;
-            --cyber-green: #06ffa5;
-            --darker-bg: #1a1a2e;
-            --card-bg: #16213e;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: 'Rajdhani', sans-serif;
-            background: var(--darker-bg); color: #fff; min-height: 100vh;
-        }
-
-        .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
-
-        .top-nav {
-            background: var(--card-bg); padding: 15px 30px;
-            margin-bottom: 30px; border-radius: 10px;
-            display: flex; justify-content: space-between; align-items: center;
-        }
-
-        .back-btn {
-            padding: 8px 20px; background: transparent;
-            border: 2px solid var(--cyber-blue); border-radius: 8px;
-            color: var(--cyber-blue); font-family: 'Orbitron', sans-serif;
-            font-weight: 600; cursor: pointer; transition: all 0.3s ease;
-            text-decoration: none; font-size: 0.9rem;
-        }
-        .back-btn:hover { background: var(--cyber-blue); color: #000; }
-
-        .profile-layout {
-            display: grid; grid-template-columns: 300px 1fr; gap: 30px;
-        }
-
-        .profile-sidebar { display: flex; flex-direction: column; gap: 15px; }
-
-        .profile-card {
-            background: var(--card-bg); border-radius: 12px;
-            padding: 30px; text-align: center;
-            border: 1px solid rgba(0,245,255,0.1);
-        }
-
-        .profile-avatar {
-            width: 140px; height: 140px;
-            background: linear-gradient(135deg, var(--cyber-purple), var(--cyber-pink));
-            border: 3px solid var(--cyber-blue); border-radius: 15px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 3.5rem; margin: 0 auto 18px;
-            box-shadow: 0 0 30px rgba(0, 245, 255, 0.3);
-        }
-
-        .profile-username {
-            font-family: 'Orbitron', sans-serif; font-size: 1.4rem; margin-bottom: 4px;
-        }
-
-        .profile-id { color: rgba(255,255,255,0.5); font-size: 0.85rem; margin-bottom: 12px; }
-
-        /* Academic badge strip */
-        .academic-badges {
-            display: flex; flex-wrap: wrap; gap: 6px;
-            justify-content: center; margin: 14px 0;
-        }
-
-        .badge {
-            display: inline-flex; align-items: center; gap: 5px;
-            padding: 4px 10px; border-radius: 16px;
-            font-size: 0.75rem; font-family: 'Orbitron', sans-serif;
-        }
-
-        .badge-board { background: rgba(255,0,110,0.15); border: 1px solid var(--cyber-pink); color: var(--cyber-pink); }
-        .badge-std { background: rgba(131,56,236,0.15); border: 1px solid var(--cyber-purple); color: #c084fc; }
-        .badge-branch { background: rgba(6,255,165,0.12); border: 1px solid var(--cyber-green); color: var(--cyber-green); }
-
-        .menu-list { background: var(--card-bg); border-radius: 12px; overflow: hidden; }
-
-        .menu-item {
-            padding: 14px 20px; cursor: pointer; transition: all 0.2s ease;
-            display: flex; align-items: center; gap: 10px;
-            border-left: 3px solid transparent;
-            color: rgba(255,255,255,0.8); font-size: 1rem;
-        }
-
-        .menu-item:hover { background: rgba(0,245,255,0.05); }
-        .menu-item.active { background: rgba(0,245,255,0.1); border-left-color: var(--cyber-blue); }
-
-        .profile-content {
-            background: var(--card-bg); border-radius: 12px; padding: 35px;
-            border: 1px solid rgba(0,245,255,0.08);
-        }
-
-        .content-title {
-            font-family: 'Orbitron', sans-serif; font-size: 1.6rem;
-            margin-bottom: 25px; padding-bottom: 14px;
-            border-bottom: 2px solid rgba(255,255,255,0.08);
-        }
-
-        .section-divider {
-            font-family: 'Orbitron', sans-serif; font-size: 0.8rem;
-            color: var(--cyber-yellow); letter-spacing: 1px;
-            text-transform: uppercase; margin: 24px 0 12px;
-            display: flex; align-items: center; gap: 12px;
-        }
-
-        .section-divider::after {
-            content: ''; flex: 1; height: 1px;
-            background: rgba(255,190,11,0.2);
-        }
-
-        .info-row {
-            display: grid; grid-template-columns: 160px 1fr 100px;
-            align-items: center; padding: 13px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .info-label { color: rgba(255,255,255,0.45); font-size: 0.9rem; }
-        .info-value { color: #fff; font-size: 0.95rem; }
-
-        .edit-btn {
-            padding: 5px 14px; background: transparent;
-            border: 1px solid var(--cyber-blue); border-radius: 6px;
-            color: var(--cyber-blue); cursor: pointer;
-            transition: all 0.2s ease; font-size: 0.82rem;
-        }
-
-        .edit-btn:hover { background: rgba(0,245,255,0.1); }
-
-        /* No-edit placeholder */
-        .no-edit { color: rgba(255,255,255,0.2); font-size: 0.8rem; font-style: italic; }
-
-        /* Setup notice */
-        .setup-notice {
-            background: rgba(255,190,11,0.08); border: 1px solid rgba(255,190,11,0.3);
-            border-radius: 10px; padding: 14px 18px; margin-bottom: 20px;
-            color: var(--cyber-yellow); font-size: 0.9rem;
-            display: flex; align-items: center; gap: 10px;
-        }
-
-        /* Edit Modal */
-        .edit-modal {
-            display: none; position: fixed; inset: 0;
-            background: rgba(0,0,0,0.8); justify-content: center;
-            align-items: center; z-index: 1000;
-        }
-        .edit-modal.active { display: flex; }
-
-        .modal-content {
-            background: var(--card-bg); padding: 35px; border-radius: 12px;
-            max-width: 520px; width: 90%;
-            border: 2px solid var(--cyber-blue);
-            max-height: 90vh; overflow-y: auto;
-        }
-
-        .modal-title {
-            font-family: 'Orbitron', sans-serif; font-size: 1.4rem; margin-bottom: 22px;
-        }
-
-        .form-group { margin-bottom: 18px; }
-
-        .form-label {
-            display: block; margin-bottom: 8px;
-            color: rgba(255,255,255,0.7); font-size: 0.88rem;
-        }
-
-        .form-input {
-            width: 100%; padding: 11px 13px;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(0,245,255,0.3); border-radius: 8px;
-            color: #fff; font-family: 'Rajdhani', sans-serif; font-size: 1rem;
-            appearance: none;
-        }
-
-        .form-input:focus { outline: none; border-color: var(--cyber-blue); }
-        select.form-input option { background: #16213e; }
-
-        /* Option buttons inside modal */
-        .option-grid { display: grid; gap: 8px; margin-top: 8px; }
-        .option-grid.cols-2 { grid-template-columns: 1fr 1fr; }
-        .option-grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
-        .option-grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
-
-        .opt-btn {
-            padding: 10px 8px; background: rgba(255,255,255,0.04);
-            border: 2px solid rgba(0,245,255,0.2); border-radius: 8px;
-            text-align: center; cursor: pointer; transition: all 0.2s;
-            font-size: 0.82rem; color: rgba(255,255,255,0.7);
-        }
-
-        .opt-btn:hover { border-color: var(--cyber-blue); color: var(--cyber-blue); }
-        .opt-btn.selected {
-            border-color: var(--cyber-yellow); background: rgba(255,190,11,0.12);
-            color: var(--cyber-yellow);
-        }
-
-        .modal-actions { display: flex; gap: 12px; margin-top: 25px; }
-
-        .save-btn {
-            flex: 1; padding: 12px; background: var(--cyber-blue);
-            border: none; border-radius: 8px; color: #000;
-            font-family: 'Orbitron', sans-serif; font-weight: 700; cursor: pointer;
-        }
-
-        .cancel-btn {
-            flex: 1; padding: 12px; background: transparent;
-            border: 1px solid rgba(255,255,255,0.3); border-radius: 8px;
-            color: #fff; cursor: pointer;
-        }
-
-        @media (max-width: 968px) {
-            .profile-layout { grid-template-columns: 1fr; }
-            .info-row { grid-template-columns: 1fr; gap: 8px; }
-        }
-    </style>
+    <link rel="stylesheet" href="shared.css">
+    <link rel="stylesheet" href="profile.css">
 </head>
 <body>
+    <div class="background"></div>
+    <div class="grid-overlay"></div>
+
     <div class="container">
         <div class="top-nav">
             <a href="main.html" class="back-btn">← Back to Main</a>
@@ -231,106 +18,73 @@
         </div>
 
         <div class="profile-layout">
+            <!-- Sidebar -->
             <div class="profile-sidebar">
                 <div class="profile-card">
                     <div class="profile-avatar" id="profileAvatar">🎮</div>
                     <div class="profile-username" id="profileUsername">Player</div>
-                    <div class="profile-id">ID: <span id="profileId">–</span></div>
-
-                    <div class="academic-badges" id="academicBadges"></div>
+                    <div class="profile-id">ID: <span id="profileId">—</span></div>
+                    <div class="profile-stats">
+                        <div class="stat-item">
+                            <div class="stat-value" id="statLevel">1</div>
+                            <div class="stat-label">Level</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="statGames">0</div>
+                            <div class="stat-label">Games</div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="menu-list">
-                    <div class="menu-item active" id="menuBasic" onclick="showSection('basic', this)">📝 Basic Info</div>
-                    <div class="menu-item" id="menuAcademic" onclick="showSection('academic', this)">🎓 Academic Profile</div>
-                    <div class="menu-item" id="menuAccount" onclick="showSection('account', this)">⚙️ Account</div>
+                    <div class="menu-item active" onclick="showSection('basic', this)">📝 Basic Info</div>
+                    <div class="menu-item"        onclick="showSection('account', this)">⚙️ Account</div>
+                    <div class="menu-item"        onclick="showSection('privacy', this)">🔒 Privacy</div>
                 </div>
             </div>
 
-            <!-- Main content area -->
+            <!-- Content -->
             <div class="profile-content">
-
-                <!-- ===== SECTION: Basic Info ===== -->
-                <div id="sectionBasic">
-                    <h2 class="content-title">Basic Info</h2>
+                <h2 class="content-title">Basic Info</h2>
+                <div class="info-grid">
 
                     <div class="info-row">
-                        <div class="info-label">Display Name</div>
-                        <div class="info-value" id="displayName">–</div>
-                        <button class="edit-btn" onclick="openModal('name')">Edit</button>
+                        <div class="info-label">Name</div>
+                        <div class="info-value" id="displayName">—</div>
+                        <button class="edit-btn" onclick="openEditModal('name')">Edit</button>
                     </div>
-                    <div class="info-row">
-                        <div class="info-label">Email</div>
-                        <div class="info-value" id="displayEmail">–</div>
-                        <div class="no-edit">–</div>
-                    </div>
+
                     <div class="info-row">
                         <div class="info-label">Role</div>
-                        <div class="info-value" id="displayUserType">–</div>
+                        <div class="info-value" id="displayUserType">—</div>
                         <div></div>
                     </div>
-                    <div class="info-row">
+
+                    <div class="info-row" id="rowAge" style="display:none;">
                         <div class="info-label">Age</div>
-                        <div class="info-value" id="displayAge">–</div>
-                        <button class="edit-btn" onclick="openModal('age')">Edit</button>
-                    </div>
-                </div>
-
-                <!-- ===== SECTION: Academic Profile ===== -->
-                <div id="sectionAcademic" style="display:none;">
-                    <h2 class="content-title">Academic Profile</h2>
-
-                    <div id="noAcademicNotice" class="setup-notice" style="display:none;">
-                        ⚠️ Complete your academic profile to unlock personalised subjects and games!
+                        <div class="info-value" id="displayAge">Not set</div>
+                        <button class="edit-btn" onclick="openEditModal('age')">Edit</button>
                     </div>
 
-                    <div class="section-divider">Education Board</div>
+                    <div class="info-row" id="rowStandard" style="display:none;">
+                        <div class="info-label">Class / Standard</div>
+                        <div class="info-value" id="displayStandard">Not set</div>
+                        <button class="edit-btn" onclick="openEditModal('standard')">Edit</button>
+                    </div>
+
+                    <div class="info-row" id="rowSchool" style="display:none;">
+                        <div class="info-label" id="schoolRowLabel">School</div>
+                        <div class="info-value" id="displaySchool">Not set</div>
+                        <button class="edit-btn" onclick="openEditModal('school')">Edit</button>
+                    </div>
+
                     <div class="info-row">
-                        <div class="info-label">Board</div>
-                        <div class="info-value" id="displayBoard">–</div>
-                        <button class="edit-btn" onclick="openModal('board')">Edit</button>
-                    </div>
-                    <div class="info-row" id="rowStateBoard">
-                        <div class="info-label">State Board</div>
-                        <div class="info-value" id="displayStateBoard">–</div>
-                        <button class="edit-btn" onclick="openModal('stateBoard')">Edit</button>
-                    </div>
-
-                    <div class="section-divider">Class & Stream</div>
-                    <div class="info-row">
-                        <div class="info-label">Standard</div>
-                        <div class="info-value" id="displayStandard">–</div>
-                        <button class="edit-btn" onclick="openModal('standard')">Edit</button>
-                    </div>
-                    <div class="info-row" id="rowBranch">
-                        <div class="info-label">Stream</div>
-                        <div class="info-value" id="displayBranch">–</div>
-                        <button class="edit-btn" onclick="openModal('branch')">Edit</button>
-                    </div>
-
-                    <div class="section-divider">School</div>
-                    <div class="info-row">
-                        <div class="info-label">School Name</div>
-                        <div class="info-value" id="displaySchool">–</div>
-                        <button class="edit-btn" onclick="openModal('school')">Edit</button>
-                    </div>
-                </div>
-
-                <!-- ===== SECTION: Account ===== -->
-                <div id="sectionAccount" style="display:none;">
-                    <h2 class="content-title">Account</h2>
-                    <div class="info-row">
-                        <div class="info-label">Auth Provider</div>
-                        <div class="info-value" id="displayProvider">–</div>
+                        <div class="info-label">Email</div>
+                        <div class="info-value" id="displayEmail">—</div>
                         <div></div>
                     </div>
-                    <div class="info-row">
-                        <div class="info-label">Username</div>
-                        <div class="info-value" id="displayUsername2">–</div>
-                        <div class="no-edit">–</div>
-                    </div>
-                </div>
 
+                </div>
             </div>
         </div>
     </div>
@@ -338,178 +92,18 @@
     <!-- Edit Modal -->
     <div class="edit-modal" id="editModal">
         <div class="modal-content">
-            <h3 class="modal-title" id="modalTitle">Edit</h3>
-            <div id="modalBody"></div>
+            <h3 class="modal-title" id="modalTitle">Edit Field</h3>
+            <div class="form-group">
+                <label class="form-label" id="modalLabel">Value</label>
+                <input type="text" class="form-input" id="modalInput">
+            </div>
             <div class="modal-actions">
-                <button class="save-btn" onclick="saveEdit()">Save</button>
-                <button class="cancel-btn" onclick="closeModal()">Cancel</button>
+                <button class="save-btn"   onclick="saveEdit()">Save</button>
+                <button class="cancel-btn" onclick="closeEditModal()">Cancel</button>
             </div>
         </div>
     </div>
 
-    <script>
-        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        if (!currentUser) window.location.href = 'login.html';
-
-        let editField = '';
-
-        // ===================== LOAD =====================
-        function loadProfile() {
-            const u = currentUser;
-            const std = parseInt(u.standard || '0');
-
-            // Sidebar
-            document.getElementById('profileAvatar').textContent = u.avatar || '🎮';
-            document.getElementById('profileUsername').textContent = u.username || 'Player';
-            document.getElementById('profileId').textContent = (u.email || '').split('@')[0];
-
-            // Academic badges
-            const badges = document.getElementById('academicBadges');
-            let badgeHtml = '';
-            if (u.board) badgeHtml += `<span class="badge badge-board">📋 ${u.board}</span>`;
-            if (u.standard) badgeHtml += `<span class="badge badge-std">📚 Class ${u.standard}</span>`;
-            if (u.branch) badgeHtml += `<span class="badge badge-branch">${u.branch === 'Science' ? '🔬' : u.branch === 'Commerce' ? '📊' : '🎨'} ${u.branch}</span>`;
-            badges.innerHTML = badgeHtml;
-
-            // Basic
-            document.getElementById('displayName').textContent = u.username || '–';
-            document.getElementById('displayEmail').textContent = u.email || '–';
-            document.getElementById('displayUserType').textContent = capitalize(u.userType) || '–';
-            document.getElementById('displayAge').textContent = u.age || 'Not set';
-
-            // Academic
-            const noNotice = document.getElementById('noAcademicNotice');
-            noNotice.style.display = (!u.board || !u.standard) ? 'flex' : 'none';
-
-            document.getElementById('displayBoard').textContent = u.board || '–';
-            document.getElementById('displayStateBoard').textContent = u.stateBoard || '–';
-            document.getElementById('rowStateBoard').style.display = u.board === 'State' ? 'grid' : 'none';
-            document.getElementById('displayStandard').textContent = u.standard ? `Class ${u.standard}` : '–';
-            document.getElementById('displayBranch').textContent = u.branch || '–';
-            document.getElementById('rowBranch').style.display = (std === 11 || std === 12) ? 'grid' : 'none';
-            document.getElementById('displaySchool').textContent = u.school || 'Not set';
-
-            // Account
-            document.getElementById('displayProvider').textContent = capitalize(u.authProvider) || 'Email';
-            document.getElementById('displayUsername2').textContent = u.username || '–';
-        }
-
-        function capitalize(s) { return s ? s.charAt(0).toUpperCase() + s.slice(1) : ''; }
-
-        // ===================== SECTIONS =====================
-        function showSection(name, el) {
-            ['Basic','Academic','Account'].forEach(s => {
-                document.getElementById(`section${s}`).style.display = 'none';
-                document.getElementById(`menu${s}`).classList.remove('active');
-            });
-            document.getElementById(`section${capitalize(name)}`).style.display = 'block';
-            el.classList.add('active');
-        }
-
-        // ===================== MODAL =====================
-        const MODAL_CONFIGS = {
-            name: { title: 'Edit Display Name', html: () => `<div class="form-group"><label class="form-label">Name</label><input type="text" class="form-input" id="mInput" value="${currentUser.username || ''}"></div>` },
-            age: { title: 'Edit Age', html: () => `<div class="form-group"><label class="form-label">Age</label><input type="number" class="form-input" id="mInput" value="${currentUser.age || ''}" min="8" max="25"></div>` },
-            school: { title: 'Edit School Name', html: () => `<div class="form-group"><label class="form-label">School</label><input type="text" class="form-input" id="mInput" value="${currentUser.school || ''}"></div>` },
-            board: {
-                title: 'Select Education Board',
-                html: () => `
-                    <div class="option-grid cols-2" id="boardOpts">
-                        ${['CBSE','ICSE','State','IB'].map(b => `
-                            <div class="opt-btn ${currentUser.board === b ? 'selected' : ''}" onclick="selectOpt(this, '${b}', 'boardOpts')">${b}</div>
-                        `).join('')}
-                    </div>`
-            },
-            stateBoard: {
-                title: 'Select State Board',
-                html: () => `<div class="form-group"><label class="form-label">State</label>
-                    <select class="form-input" id="mInput">
-                        <option value="">-- Select --</option>
-                        ${['Maharashtra','Uttar Pradesh','Rajasthan','Tamil Nadu','Karnataka','West Bengal','Gujarat','Bihar','Other'].map(s =>
-                            `<option value="${s}" ${currentUser.stateBoard === s ? 'selected' : ''}>${s}</option>`
-                        ).join('')}
-                    </select></div>`
-            },
-            standard: {
-                title: 'Select Class / Standard',
-                html: () => `
-                    <div class="option-grid cols-4" id="stdOpts">
-                        ${['6','7','8','9','10','11','12'].map(s => `
-                            <div class="opt-btn ${currentUser.standard === s ? 'selected' : ''}" onclick="selectOpt(this, '${s}', 'stdOpts')">${s}th</div>
-                        `).join('')}
-                    </div>`
-            },
-            branch: {
-                title: 'Select Stream',
-                html: () => `
-                    <div class="option-grid cols-3" id="branchOpts">
-                        ${[['Science','🔬'],['Commerce','📊'],['Arts','🎨']].map(([b, ic]) => `
-                            <div class="opt-btn ${currentUser.branch === b ? 'selected' : ''}" onclick="selectOpt(this, '${b}', 'branchOpts')">${ic} ${b}</div>
-                        `).join('')}
-                    </div>`
-            }
-        };
-
-        let selectedOptVal = '';
-
-        function selectOpt(el, val, groupId) {
-            document.querySelectorAll(`#${groupId} .opt-btn`).forEach(b => b.classList.remove('selected'));
-            el.classList.add('selected');
-            selectedOptVal = val;
-        }
-
-        function openModal(field) {
-            editField = field;
-            selectedOptVal = '';
-            const cfg = MODAL_CONFIGS[field];
-            if (!cfg) return;
-            document.getElementById('modalTitle').textContent = cfg.title;
-            document.getElementById('modalBody').innerHTML = cfg.html();
-            document.getElementById('editModal').classList.add('active');
-        }
-
-        function closeModal() {
-            document.getElementById('editModal').classList.remove('active');
-        }
-
-        function saveEdit() {
-            const inp = document.getElementById('mInput');
-
-            if (editField === 'name') {
-                const v = inp.value.trim();
-                if (!v) { alert('Name cannot be empty'); return; }
-                currentUser.username = v;
-            } else if (editField === 'age') {
-                currentUser.age = parseInt(inp.value) || null;
-            } else if (editField === 'school') {
-                currentUser.school = inp.value.trim();
-            } else if (editField === 'board') {
-                if (!selectedOptVal) { alert('Please select a board'); return; }
-                currentUser.board = selectedOptVal;
-                if (selectedOptVal !== 'State') currentUser.stateBoard = '';
-            } else if (editField === 'stateBoard') {
-                currentUser.stateBoard = inp.value;
-            } else if (editField === 'standard') {
-                if (!selectedOptVal) { alert('Please select a standard'); return; }
-                currentUser.standard = selectedOptVal;
-                const s = parseInt(selectedOptVal);
-                if (s !== 11 && s !== 12) currentUser.branch = '';
-            } else if (editField === 'branch') {
-                if (!selectedOptVal) { alert('Please select a stream'); return; }
-                currentUser.branch = selectedOptVal;
-            }
-
-            // Sync to users list
-            const users = JSON.parse(localStorage.getItem('gamingUsers')) || [];
-            const updated = users.map(u => u.email === currentUser.email ? currentUser : u);
-            localStorage.setItem('gamingUsers', JSON.stringify(updated));
-            localStorage.setItem('currentUser', JSON.stringify(currentUser));
-
-            closeModal();
-            loadProfile();
-        }
-
-        loadProfile();
-    </script>
+    <script src="profile.js"></script>
 </body>
 </html>

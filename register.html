@@ -4,450 +4,137 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NEXUS GAMING - Register</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --cyber-pink: #ff006e; --cyber-blue: #00f5ff;
-            --cyber-purple: #8338ec; --cyber-yellow: #ffbe0b;
-            --cyber-green: #06ffa5; --darker-bg: #050714;
-            --glow-color: rgba(0, 245, 255, 0.5);
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Rajdhani', sans-serif; background: var(--darker-bg); color: #fff; overflow-x: hidden; min-height: 100vh; }
-        .background { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;
-            background: radial-gradient(ellipse at 20% 30%, rgba(255,0,110,0.15) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 70%, rgba(131,56,236,0.15) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 50%, rgba(0,245,255,0.1) 0%, transparent 50%),
-                linear-gradient(180deg, #050714 0%, #0a0e27 100%); }
-        .grid-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-image: linear-gradient(rgba(0,245,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,245,255,0.03) 1px, transparent 1px);
-            background-size: 50px 50px; z-index: 1; animation: gridMove 20s linear infinite; }
-        @keyframes gridMove { 0% { transform: translateY(0); } 100% { transform: translateY(50px); } }
-        .particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 2; overflow: hidden; }
-        .particle { position: absolute; width: 3px; height: 3px; background: var(--cyber-blue); border-radius: 50%; box-shadow: 0 0 10px var(--cyber-blue); animation: particleFloat 15s infinite; }
-        @keyframes particleFloat { 0% { transform: translateY(100vh); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(-100px) translateX(100px); opacity: 0; } }
-        .container { position: relative; z-index: 10; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
-        .auth-wrapper { display: flex; max-width: 1200px; width: 100%; gap: 40px; align-items: flex-start; }
-        .ai-character { flex: 0 0 270px; display: flex; flex-direction: column; align-items: center; text-align: center; animation: slideInLeft 1s ease-out; position: sticky; top: 20px; }
-        @keyframes slideInLeft { from { opacity: 0; transform: translateX(-50px); } to { opacity: 1; transform: translateX(0); } }
-        .character-container { position: relative; width: 230px; height: 290px; margin-bottom: 18px; }
-        .character-glow { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 270px; height: 330px; background: radial-gradient(circle, var(--glow-color) 0%, transparent 70%); animation: pulse 3s ease-in-out infinite; }
-        @keyframes pulse { 0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); } 50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.1); } }
-        .character-avatar { position: relative; width: 100%; height: 100%; background: linear-gradient(135deg, var(--cyber-purple), var(--cyber-pink)); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 85px; border: 3px solid var(--cyber-blue); box-shadow: 0 0 30px rgba(0,245,255,0.4), inset 0 0 30px rgba(0,245,255,0.2); overflow: hidden; }
-        .character-avatar::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%); animation: shine 3s infinite; }
-        @keyframes shine { 0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); } 100% { transform: translateX(100%) translateY(100%) rotate(45deg); } }
-        .ai-name { font-family: 'Orbitron', sans-serif; font-size: 1.9rem; font-weight: 900; background: linear-gradient(90deg, var(--cyber-blue), var(--cyber-pink)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 3px; }
-        .ai-greeting { font-size: 0.95rem; color: rgba(255,255,255,0.8); margin-bottom: 5px; }
-        .ai-subtitle { font-size: 0.8rem; color: rgba(0,245,255,0.7); font-style: italic; }
-        .steps-indicator { display: flex; gap: 5px; margin-top: 16px; align-items: center; }
-        .step-dot { width: 28px; height: 28px; border-radius: 50%; border: 2px solid rgba(0,245,255,0.3); display: flex; align-items: center; justify-content: center; font-size: 0.68rem; font-family: 'Orbitron', sans-serif; color: rgba(255,255,255,0.4); transition: all 0.3s; }
-        .step-dot.active { border-color: var(--cyber-blue); color: var(--cyber-blue); box-shadow: 0 0 12px rgba(0,245,255,0.4); }
-        .step-dot.done { background: var(--cyber-blue); border-color: var(--cyber-blue); color: #000; }
-        .step-line { flex: 1; height: 2px; background: rgba(0,245,255,0.2); }
-        .step-line.done { background: var(--cyber-blue); }
-        .auth-panel { flex: 1; max-width: 560px; animation: slideInRight 1s ease-out; }
-        @keyframes slideInRight { from { opacity: 0; transform: translateX(50px); } to { opacity: 1; transform: translateX(0); } }
-        .auth-card { background: rgba(10,14,39,0.85); border: 2px solid rgba(0,245,255,0.3); border-radius: 20px; padding: 32px; backdrop-filter: blur(10px); box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 40px rgba(0,245,255,0.1); }
-        .auth-header { text-align: center; margin-bottom: 20px; }
-        .auth-title { font-family: 'Orbitron', sans-serif; font-size: 1.6rem; font-weight: 700; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 2px; }
-        .auth-subtitle { color: rgba(255,255,255,0.6); font-size: 0.88rem; }
-        .step-panel { display: none; }
-        .step-panel.active { display: block; animation: fadeStep 0.4s ease; }
-        @keyframes fadeStep { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-        .step-title { font-family: 'Orbitron', sans-serif; font-size: 0.85rem; color: var(--cyber-yellow); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 9px; }
-        .step-badge { background: var(--cyber-yellow); color: #000; width: 21px; height: 21px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.68rem; font-weight: 700; }
-        .google-btn { width: 100%; padding: 12px; background: #fff; border: none; border-radius: 10px; color: #000; font-family: 'Rajdhani', sans-serif; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; justify-content: center; gap: 11px; margin-bottom: 15px; }
-        .google-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255,255,255,0.2); }
-        .divider { display: flex; align-items: center; margin: 16px 0; color: rgba(255,255,255,0.4); font-size: 0.82rem; }
-        .divider::before, .divider::after { content: ''; flex: 1; border-bottom: 1px solid rgba(255,255,255,0.2); }
-        .divider span { padding: 0 13px; }
-        .form-group { margin-bottom: 14px; }
-        .form-label { display: block; margin-bottom: 7px; color: var(--cyber-blue); font-weight: 600; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px; }
-        .form-input { width: 100%; padding: 10px 13px; background: rgba(255,255,255,0.05); border: 2px solid rgba(0,245,255,0.2); border-radius: 10px; color: #fff; font-family: 'Rajdhani', sans-serif; font-size: 0.95rem; transition: all 0.3s; }
-        .form-input:focus { outline: none; border-color: var(--cyber-blue); background: rgba(0,245,255,0.05); box-shadow: 0 0 14px rgba(0,245,255,0.2); }
-        select.form-input { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2300f5ff' d='M6 8L1 3h10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 13px center; padding-right: 32px; }
-        select.form-input option { background: #0a0e27; color: #fff; }
-        .tile-grid { display: grid; gap: 8px; margin-top: 6px; }
-        .tile-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
-        .tile-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
-        .tile { padding: 12px 7px; background: rgba(255,255,255,0.04); border: 2px solid rgba(0,245,255,0.2); border-radius: 10px; text-align: center; cursor: pointer; transition: all 0.3s; }
-        .tile:hover { border-color: var(--cyber-blue); background: rgba(0,245,255,0.07); }
-        .tile.selected { border-color: var(--cyber-yellow); background: rgba(255,190,11,0.1); box-shadow: 0 0 14px rgba(255,190,11,0.3); }
-        .tile-icon { font-size: 1.5rem; margin-bottom: 4px; }
-        .tile-name { font-family: 'Orbitron', sans-serif; font-size: 0.68rem; color: rgba(255,255,255,0.85); letter-spacing: 0.5px; }
-        .tile-desc { font-size: 0.67rem; color: rgba(255,255,255,0.4); margin-top: 3px; }
-
-        /* PCM/PCB/PCMB special tiles */
-        .sci-tile { padding: 14px 10px; border-radius: 12px; }
-        .sci-tile .combo-subjects { font-size: 0.68rem; color: rgba(255,255,255,0.5); margin-top: 5px; line-height: 1.5; }
-        .sci-tile .exam-tag { display: inline-block; margin-top: 6px; padding: 2px 9px; border-radius: 10px; font-size: 0.65rem; font-family: 'Orbitron', sans-serif; font-weight: 700; }
-        .sci-tile.pcm .exam-tag { background: rgba(255,190,11,0.2); color: var(--cyber-yellow); border: 1px solid rgba(255,190,11,0.4); }
-        .sci-tile.pcb .exam-tag { background: rgba(6,255,165,0.15); color: var(--cyber-green); border: 1px solid rgba(6,255,165,0.4); }
-        .sci-tile.pcmb .exam-tag { background: rgba(131,56,236,0.2); color: #c084fc; border: 1px solid rgba(131,56,236,0.4); }
-        .sci-tile.cs .exam-tag { background: rgba(0,245,255,0.12); color: var(--cyber-blue); border: 1px solid rgba(0,245,255,0.4); }
-        .sci-tile.selected { border-color: var(--cyber-blue) !important; background: rgba(0,245,255,0.1) !important; box-shadow: 0 0 18px rgba(0,245,255,0.35) !important; }
-
-        .std-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; margin-top: 6px; }
-        .std-tile { padding: 10px 5px; background: rgba(255,255,255,0.04); border: 2px solid rgba(0,245,255,0.2); border-radius: 8px; text-align: center; cursor: pointer; transition: all 0.3s; font-family: 'Orbitron', sans-serif; font-size: 0.75rem; color: rgba(255,255,255,0.6); }
-        .std-tile:hover { border-color: var(--cyber-blue); color: var(--cyber-blue); }
-        .std-tile.selected { border-color: var(--cyber-purple); background: rgba(131,56,236,0.18); color: #fff; box-shadow: 0 0 11px rgba(131,56,236,0.4); }
-
-        .avatar-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 6px; }
-        .avatar-opt { aspect-ratio: 1; background: linear-gradient(135deg, var(--cyber-purple), var(--cyber-pink)); border: 2px solid rgba(0,245,255,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; cursor: pointer; transition: all 0.3s; }
-        .avatar-opt:hover { transform: scale(1.1); border-color: var(--cyber-blue); box-shadow: 0 0 16px rgba(0,245,255,0.4); }
-        .avatar-opt.selected { border-color: var(--cyber-yellow); box-shadow: 0 0 20px rgba(255,190,11,0.6); transform: scale(1.05); }
-
-        .nav-buttons { display: flex; gap: 10px; margin-top: 20px; }
-        .next-btn { flex: 1; padding: 12px; background: linear-gradient(135deg, var(--cyber-blue), var(--cyber-purple)); border: none; border-radius: 10px; color: #fff; font-family: 'Orbitron', sans-serif; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; transition: all 0.3s; box-shadow: 0 0 16px rgba(0,245,255,0.3); }
-        .next-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 26px rgba(0,245,255,0.5); }
-        .back-step-btn { padding: 12px 17px; background: transparent; border: 2px solid rgba(255,255,255,0.2); border-radius: 10px; color: rgba(255,255,255,0.6); font-family: 'Orbitron', sans-serif; font-size: 0.78rem; cursor: pointer; transition: all 0.3s; }
-        .back-step-btn:hover { border-color: var(--cyber-blue); color: var(--cyber-blue); }
-        .submit-btn { flex: 1; padding: 12px; background: linear-gradient(135deg, var(--cyber-green), var(--cyber-blue)); border: none; border-radius: 10px; color: #000; font-family: 'Orbitron', sans-serif; font-size: 0.9rem; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; transition: all 0.3s; }
-        .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 26px rgba(6,255,165,0.5); }
-        .error-message { background: rgba(255,0,110,0.1); border: 1px solid var(--cyber-pink); border-radius: 8px; padding: 9px; margin-bottom: 12px; color: var(--cyber-pink); font-size: 0.85rem; display: none; }
-        .error-message.show { display: block; animation: shake 0.5s ease; }
-        @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-8px); } 75% { transform: translateX(8px); } }
-        .review-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .review-label { color: rgba(255,255,255,0.45); font-size: 0.8rem; }
-        .review-value { color: #fff; font-weight: 600; font-size: 0.88rem; }
-        .info-note { background: rgba(0,245,255,0.06); border: 1px solid rgba(0,245,255,0.2); border-radius: 8px; padding: 9px 13px; font-size: 0.75rem; color: rgba(0,245,255,0.8); margin-top: 9px; }
-        .login-link { text-align: center; margin-top: 14px; color: rgba(255,255,255,0.6); font-size: 0.88rem; }
-        .login-link a { color: var(--cyber-blue); text-decoration: none; font-weight: 600; }
-        .login-link a:hover { color: var(--cyber-pink); }
-        @media (max-width: 968px) { .auth-wrapper { flex-direction: column; } .ai-character { flex: none; position: static; } .character-container { width: 170px; height: 210px; } .character-avatar { font-size: 60px; } }
-        @media (max-width: 480px) { .auth-card { padding: 18px; } .avatar-grid { grid-template-columns: repeat(3,1fr); } .std-grid { grid-template-columns: repeat(3,1fr); } .tile-grid.cols-3 { grid-template-columns: 1fr; } }
-    </style>
+    <link rel="stylesheet" href="shared.css">
+    <link rel="stylesheet" href="register.css">
 </head>
 <body>
-<div class="background"></div>
-<div class="grid-overlay"></div>
-<div class="particles" id="particles"></div>
+    <div class="background"></div>
+    <div class="grid-overlay"></div>
+    <div class="particles" id="particles"></div>
 
-<div class="container">
-  <div class="auth-wrapper">
+    <div class="container">
+        <div class="auth-wrapper">
 
-    <!-- CHARACTER PANEL -->
-    <div class="ai-character">
-      <div class="character-container">
-        <div class="character-glow"></div>
-        <div class="character-avatar">🤖</div>
-      </div>
-      <h1 class="ai-name">NEXUS AI</h1>
-      <p class="ai-greeting">Welcome, Future Champion</p>
-      <p class="ai-subtitle">Register to enter the arena</p>
-      <div class="steps-indicator">
-        <div class="step-dot active" id="dot1">1</div>
-        <div class="step-line" id="line1"></div>
-        <div class="step-dot" id="dot2">2</div>
-        <div class="step-line" id="line2"></div>
-        <div class="step-dot" id="dot3">3</div>
-        <div class="step-line" id="line3"></div>
-        <div class="step-dot" id="dot4">4</div>
-      </div>
+            <!-- AI Character -->
+            <div class="ai-character">
+                <div class="character-container">
+                    <div class="character-glow"></div>
+                    <div class="character-avatar">🤖</div>
+                </div>
+                <h1 class="ai-name">NEXUS AI</h1>
+                <p class="ai-greeting">Welcome, Future Champion</p>
+                <p class="ai-subtitle">Register to enter the gaming arena</p>
+            </div>
+
+            <!-- Auth Panel -->
+            <div class="auth-panel">
+                <div class="auth-card">
+                    <div class="auth-header">
+                        <h2 class="auth-title">Create Account</h2>
+                        <p class="auth-subtitle">Join the ultimate learning adventure</p>
+                    </div>
+
+                    <div class="error-message" id="errorMessage"></div>
+
+                    <form id="registerForm" onsubmit="return handleRegister(event)">
+
+                        <!-- Role Selection -->
+                        <div class="form-group">
+                            <label class="form-label">I am a…</label>
+                            <div class="user-type-grid">
+                                <div class="user-type-option" onclick="selectUserType(this, 'student')">
+                                    <div class="user-type-icon">🎓</div>
+                                    <div class="user-type-label">Student</div>
+                                </div>
+                                <div class="user-type-option" onclick="selectUserType(this, 'parent')">
+                                    <div class="user-type-icon">👨‍👩‍👦</div>
+                                    <div class="user-type-label">Parent</div>
+                                </div>
+                                <div class="user-type-option" onclick="selectUserType(this, 'teacher')">
+                                    <div class="user-type-icon">👨‍🏫</div>
+                                    <div class="user-type-label">Teacher</div>
+                                </div>
+                            </div>
+                            <input type="hidden" id="selectedUserType">
+                        </div>
+
+                        <!-- Basic Info -->
+                        <div class="section-divider">Basic Info</div>
+
+                        <div class="form-group">
+                            <label class="form-label">Username</label>
+                            <input type="text" class="form-input" id="regUsername" placeholder="Choose a cool username" required minlength="3">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-input" id="regEmail" placeholder="your@email.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Password</label>
+                                <input type="password" class="form-input" id="regPassword" placeholder="Min. 6 characters" required minlength="6">
+                            </div>
+                        </div>
+
+                        <!-- Student-only fields -->
+                        <div id="ageGroup" class="form-row" style="display:none;">
+                            <div class="form-group">
+                                <label class="form-label">Age</label>
+                                <input type="number" class="form-input" id="regAge" placeholder="e.g. 8" min="3" max="12">
+                            </div>
+                            <div id="standardGroup" class="form-group">
+                                <label class="form-label">Class / Standard</label>
+                                <select class="form-input" id="regStandard">
+                                    <option value="">Select class</option>
+                                    <option value="LKG">LKG</option>
+                                    <option value="UKG">UKG</option>
+                                    <option value="1">1st Standard</option>
+                                    <option value="2">2nd Standard</option>
+                                    <option value="3">3rd Standard</option>
+                                    <option value="4">4th Standard</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- School field (student / teacher) -->
+                        <div id="schoolGroup" class="form-group" style="display:none;">
+                            <label class="form-label" id="schoolLabel">School Name</label>
+                            <input type="text" class="form-input" id="regSchool" placeholder="Enter school name">
+                        </div>
+
+                        <!-- Avatar Picker -->
+                        <div class="section-divider">Choose Your Avatar</div>
+                        <div class="form-group">
+                            <div class="avatar-grid">
+                                <div class="avatar-option" onclick="selectAvatar(this,'🎮')">🎮</div>
+                                <div class="avatar-option" onclick="selectAvatar(this,'⚔️')">⚔️</div>
+                                <div class="avatar-option" onclick="selectAvatar(this,'🛡️')">🛡️</div>
+                                <div class="avatar-option" onclick="selectAvatar(this,'👾')">👾</div>
+                                <div class="avatar-option" onclick="selectAvatar(this,'🎯')">🎯</div>
+                                <div class="avatar-option" onclick="selectAvatar(this,'🔥')">🔥</div>
+                                <div class="avatar-option" onclick="selectAvatar(this,'⚡')">⚡</div>
+                                <div class="avatar-option" onclick="selectAvatar(this,'🌟')">🌟</div>
+                                <div class="avatar-option" onclick="selectAvatar(this,'💎')">💎</div>
+                                <div class="avatar-option" onclick="selectAvatar(this,'🎲')">🎲</div>
+                                <div class="avatar-option" onclick="selectAvatar(this,'🏆')">🏆</div>
+                                <div class="avatar-option" onclick="selectAvatar(this,'👑')">👑</div>
+                            </div>
+                            <input type="hidden" id="selectedAvatar">
+                        </div>
+
+                        <button type="submit" class="submit-btn">Create Account</button>
+                    </form>
+
+                    <div class="login-link">
+                        Already have an account? <a href="login.html">Login here</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
 
-    <!-- FORM PANEL -->
-    <div class="auth-panel">
-      <div class="auth-card">
-        <div class="auth-header">
-          <h2 class="auth-title">Create Account</h2>
-          <p class="auth-subtitle">Your personalised learning journey starts here</p>
-        </div>
-        <div class="error-message" id="errorMessage"></div>
-
-        <!-- STEP 1 -->
-        <div class="step-panel active" id="step1">
-          <div class="step-title"><div class="step-badge">1</div> Who are you?</div>
-          <button class="google-btn" onclick="handleGoogleRegister()">
-            <svg viewBox="0 0 24 24" width="20" height="20">
-              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-              <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
-              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
-            </svg>
-            Continue with Google
-          </button>
-          <div class="divider"><span>OR</span></div>
-          <div class="form-group">
-            <label class="form-label">I am a...</label>
-            <div class="tile-grid cols-3">
-              <div class="tile" onclick="selectRole(this,'student')"><div class="tile-icon">🎓</div><div class="tile-name">Student</div></div>
-              <div class="tile" onclick="selectRole(this,'teacher')"><div class="tile-icon">👨‍🏫</div><div class="tile-name">Teacher</div></div>
-              <div class="tile" onclick="selectRole(this,'admin')"><div class="tile-icon">🏫</div><div class="tile-name">School Admin</div></div>
-            </div>
-          </div>
-          <div class="form-group"><label class="form-label">Username</label><input type="text" class="form-input" id="regUsername" placeholder="Your gamer tag" minlength="3"></div>
-          <div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" id="regEmail" placeholder="your@email.com"></div>
-          <div class="form-group"><label class="form-label">Password</label><input type="password" class="form-input" id="regPassword" placeholder="Min 6 characters"></div>
-          <div class="nav-buttons"><button class="next-btn" onclick="goToStep(2)">Next →</button></div>
-          <div class="login-link">Already have an account? <a href="login.html">Login here</a></div>
-        </div>
-
-        <!-- STEP 2 -->
-        <div class="step-panel" id="step2">
-          <div class="step-title"><div class="step-badge">2</div> Academic Profile</div>
-
-          <!-- STUDENT -->
-          <div id="studentFields">
-            <div class="form-group">
-              <label class="form-label">Education Board</label>
-              <div class="tile-grid cols-2">
-                <div class="tile" onclick="selectBoard(this,'CBSE')"><div class="tile-icon">📋</div><div class="tile-name">CBSE</div><div class="tile-desc">Central Board</div></div>
-                <div class="tile" onclick="selectBoard(this,'ICSE')"><div class="tile-icon">📘</div><div class="tile-name">ICSE</div><div class="tile-desc">Council for Indian School</div></div>
-                <div class="tile" onclick="selectBoard(this,'State')"><div class="tile-icon">🗺️</div><div class="tile-name">State Board</div><div class="tile-desc">Maharashtra / UP / etc.</div></div>
-                <div class="tile" onclick="selectBoard(this,'IB')"><div class="tile-icon">🌐</div><div class="tile-name">IB / IGCSE</div><div class="tile-desc">International</div></div>
-              </div>
-            </div>
-            <div class="form-group" id="stateBoardGroup" style="display:none;">
-              <label class="form-label">Your State</label>
-              <select class="form-input" id="stateBoardSelect" onchange="fd.stateBoard=this.value">
-                <option value="">-- Select State --</option>
-                <option>Maharashtra</option><option>Uttar Pradesh</option><option>Rajasthan</option>
-                <option>Tamil Nadu</option><option>Karnataka</option><option>West Bengal</option>
-                <option>Gujarat</option><option>Bihar</option><option>Andhra Pradesh</option>
-                <option>Telangana</option><option>Other</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label class="form-label">Class / Standard</label>
-              <div class="std-grid">
-                <div class="std-tile" onclick="selectStd(this,'6')">6th</div>
-                <div class="std-tile" onclick="selectStd(this,'7')">7th</div>
-                <div class="std-tile" onclick="selectStd(this,'8')">8th</div>
-                <div class="std-tile" onclick="selectStd(this,'9')">9th</div>
-                <div class="std-tile" onclick="selectStd(this,'10')">10th</div>
-                <div class="std-tile" onclick="selectStd(this,'11')">11th</div>
-                <div class="std-tile" onclick="selectStd(this,'12')">12th</div>
-              </div>
-            </div>
-            <!-- Stream (11/12 only) -->
-            <div class="form-group" id="streamGroup" style="display:none;">
-              <label class="form-label">Stream</label>
-              <div class="tile-grid cols-3">
-                <div class="tile" onclick="selectStream(this,'Science')"><div class="tile-icon">🔬</div><div class="tile-name">Science</div></div>
-                <div class="tile" onclick="selectStream(this,'Commerce')"><div class="tile-icon">📊</div><div class="tile-name">Commerce</div></div>
-                <div class="tile" onclick="selectStream(this,'Arts')"><div class="tile-icon">🎨</div><div class="tile-name">Arts / Humanities</div></div>
-              </div>
-            </div>
-            <!-- Science sub-stream (PCM/PCB/PCMB/CS) -->
-            <div class="form-group" id="scienceSubGroup" style="display:none;">
-              <label class="form-label">Science Combination</label>
-              <div class="tile-grid cols-2">
-                <div class="tile sci-tile pcm" onclick="selectSciSub(this,'PCM')">
-                  <div class="tile-icon">🧮 ⚛️ 🧪</div>
-                  <div class="tile-name">PCM</div>
-                  <div class="combo-subjects">Physics · Chemistry · Maths</div>
-                  <div class="exam-tag">→ JEE / Engineering</div>
-                </div>
-                <div class="tile sci-tile pcb" onclick="selectSciSub(this,'PCB')">
-                  <div class="tile-icon">⚛️ 🧪 🦠</div>
-                  <div class="tile-name">PCB</div>
-                  <div class="combo-subjects">Physics · Chemistry · Biology</div>
-                  <div class="exam-tag">→ NEET / Medical</div>
-                </div>
-                <div class="tile sci-tile pcmb" onclick="selectSciSub(this,'PCMB')">
-                  <div class="tile-icon">🔬 📈</div>
-                  <div class="tile-name">PCMB</div>
-                  <div class="combo-subjects">Physics · Chemistry · Maths · Biology</div>
-                  <div class="exam-tag">→ JEE + NEET Both</div>
-                </div>
-                <div class="tile sci-tile cs" onclick="selectSciSub(this,'PCM_CS')">
-                  <div class="tile-icon">🧮 💻</div>
-                  <div class="tile-name">PCM + CS</div>
-                  <div class="combo-subjects">Physics · Chemistry · Maths · Computer Science</div>
-                  <div class="exam-tag">→ Engineering / IT</div>
-                </div>
-              </div>
-              <div class="info-note">💡 This helps us serve <strong>JEE-level</strong> or <strong>NEET-level</strong> concept visualisations and practice games exactly aligned to your exam!</div>
-            </div>
-            <div class="form-group"><label class="form-label">School Name <span style="opacity:0.5">(optional)</span></label><input type="text" class="form-input" id="regSchool" placeholder="Your school name"></div>
-            <div class="form-group"><label class="form-label">Age <span style="opacity:0.5">(optional)</span></label><input type="number" class="form-input" id="regAge" placeholder="e.g. 16" min="8" max="25"></div>
-          </div>
-
-          <!-- STAFF -->
-          <div id="staffFields" style="display:none;">
-            <div class="form-group"><label class="form-label">School / Institution Name</label><input type="text" class="form-input" id="regSchoolTeacher" placeholder="Name of your school"></div>
-            <div class="form-group"><label class="form-label">Board You Teach</label>
-              <select class="form-input" id="teacherBoard"><option value="">-- Select Board --</option><option>CBSE</option><option>ICSE</option><option>State</option><option>IB</option><option>Multiple</option></select></div>
-            <div class="form-group"><label class="form-label">Subject(s) You Teach</label><input type="text" class="form-input" id="teacherSubject" placeholder="e.g. Mathematics, Physics"></div>
-          </div>
-
-          <div class="nav-buttons">
-            <button class="back-step-btn" onclick="goToStep(1)">← Back</button>
-            <button class="next-btn" onclick="goToStep(3)">Next →</button>
-          </div>
-        </div>
-
-        <!-- STEP 3: Avatar -->
-        <div class="step-panel" id="step3">
-          <div class="step-title"><div class="step-badge">3</div> Choose Your Avatar</div>
-          <div class="avatar-grid">
-            <div class="avatar-opt" onclick="selectAvatar(this,'🎮')">🎮</div>
-            <div class="avatar-opt" onclick="selectAvatar(this,'⚔️')">⚔️</div>
-            <div class="avatar-opt" onclick="selectAvatar(this,'🛡️')">🛡️</div>
-            <div class="avatar-opt" onclick="selectAvatar(this,'👾')">👾</div>
-            <div class="avatar-opt" onclick="selectAvatar(this,'🎯')">🎯</div>
-            <div class="avatar-opt" onclick="selectAvatar(this,'🔥')">🔥</div>
-            <div class="avatar-opt" onclick="selectAvatar(this,'⚡')">⚡</div>
-            <div class="avatar-opt" onclick="selectAvatar(this,'🌟')">🌟</div>
-            <div class="avatar-opt" onclick="selectAvatar(this,'💎')">💎</div>
-            <div class="avatar-opt" onclick="selectAvatar(this,'🎲')">🎲</div>
-            <div class="avatar-opt" onclick="selectAvatar(this,'🏆')">🏆</div>
-            <div class="avatar-opt" onclick="selectAvatar(this,'👑')">👑</div>
-          </div>
-          <div class="nav-buttons">
-            <button class="back-step-btn" onclick="goToStep(2)">← Back</button>
-            <button class="next-btn" onclick="goToStep(4)">Next →</button>
-          </div>
-        </div>
-
-        <!-- STEP 4: Review -->
-        <div class="step-panel" id="step4">
-          <div class="step-title"><div class="step-badge">4</div> Ready to Launch!</div>
-          <div id="reviewCard" style="background:rgba(0,245,255,0.04);border:1px solid rgba(0,245,255,0.18);border-radius:12px;padding:16px;margin-bottom:16px;"></div>
-          <div class="nav-buttons">
-            <button class="back-step-btn" onclick="goToStep(3)">← Back</button>
-            <button class="submit-btn" onclick="handleRegister()">🚀 Launch!</button>
-          </div>
-          <div class="login-link" style="margin-top:13px;">Already have an account? <a href="login.html">Login here</a></div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</div>
-
-<script>
-const fd = { userType:'', username:'', email:'', password:'', board:'', stateBoard:'', standard:'', stream:'', scienceSub:'', school:'', age:'', avatar:'', teacherBoard:'', teacherSubject:'' };
-let curStep = 1;
-
-// Particles
-(function(){ const c=document.getElementById('particles'); for(let i=0;i<30;i++){ const p=document.createElement('div'); p.className='particle'; p.style.left=Math.random()*100+'%'; p.style.animationDelay=Math.random()*15+'s'; p.style.animationDuration=(Math.random()*10+10)+'s'; c.appendChild(p); } })();
-
-function updateDots(s){ for(let i=1;i<=4;i++){ const d=document.getElementById('dot'+i); d.classList.remove('active','done'); if(i<s)d.classList.add('done'); else if(i===s)d.classList.add('active'); } for(let i=1;i<=3;i++) document.getElementById('line'+i).classList.toggle('done',i<s); }
-
-function goToStep(s){
-  if(s>curStep){ const e=validate(curStep); if(e){ showErr(e); return; } }
-  document.getElementById('step'+curStep).classList.remove('active');
-  curStep=s;
-  document.getElementById('step'+curStep).classList.add('active');
-  updateDots(s);
-  if(s===4) buildReview();
-}
-
-function validate(s){
-  if(s===1){
-    if(!fd.userType) return 'Please select your role!';
-    const u=document.getElementById('regUsername').value.trim();
-    const e=document.getElementById('regEmail').value.trim();
-    const p=document.getElementById('regPassword').value;
-    if(u.length<3) return 'Username must be at least 3 characters!';
-    if(!e.includes('@')) return 'Please enter a valid email!';
-    if(p.length<6) return 'Password must be at least 6 characters!';
-    const users=JSON.parse(localStorage.getItem('gamingUsers'))||[];
-    if(users.some(x=>x.username===u)) return 'Username already taken!';
-    if(users.some(x=>x.email===e)) return 'Email already registered!';
-    fd.username=u; fd.email=e; fd.password=p;
-  }
-  if(s===2){
-    if(fd.userType==='student'){
-      if(!fd.board) return 'Please select your education board!';
-      if(fd.board==='State' && !document.getElementById('stateBoardSelect').value) return 'Please select your state!';
-      if(!fd.standard) return 'Please select your class!';
-      const std=parseInt(fd.standard);
-      if((std===11||std===12) && !fd.stream) return 'Please select your stream!';
-      if((std===11||std===12) && fd.stream==='Science' && !fd.scienceSub) return 'Please select your Science combination (PCM / PCB / PCMB / PCM+CS)!';
-      if(fd.board==='State') fd.stateBoard=document.getElementById('stateBoardSelect').value;
-      fd.school=document.getElementById('regSchool').value.trim();
-      fd.age=document.getElementById('regAge').value;
-    } else {
-      const sch=document.getElementById('regSchoolTeacher').value.trim();
-      const brd=document.getElementById('teacherBoard').value;
-      if(!sch) return 'Please enter your school name!';
-      if(!brd) return 'Please select the board you teach!';
-      fd.school=sch; fd.teacherBoard=brd;
-      fd.teacherSubject=document.getElementById('teacherSubject').value.trim();
-    }
-  }
-  if(s===3 && !fd.avatar) return 'Please choose an avatar!';
-  return null;
-}
-
-function selectRole(el,r){
-  document.querySelectorAll('#step1 .tile').forEach(t=>t.classList.remove('selected'));
-  el.classList.add('selected'); fd.userType=r;
-  document.getElementById('studentFields').style.display=r==='student'?'block':'none';
-  document.getElementById('staffFields').style.display=r!=='student'?'block':'none';
-}
-
-function selectBoard(el,b){
-  el.closest('.tile-grid').querySelectorAll('.tile').forEach(t=>t.classList.remove('selected'));
-  el.classList.add('selected'); fd.board=b;
-  document.getElementById('stateBoardGroup').style.display=b==='State'?'block':'none';
-}
-
-function selectStd(el,s){
-  document.querySelectorAll('.std-tile').forEach(t=>t.classList.remove('selected'));
-  el.classList.add('selected'); fd.standard=s;
-  const n=parseInt(s); const show=n===11||n===12;
-  document.getElementById('streamGroup').style.display=show?'block':'none';
-  if(!show){ fd.stream=''; fd.scienceSub=''; document.getElementById('scienceSubGroup').style.display='none'; }
-}
-
-function selectStream(el,s){
-  el.closest('.tile-grid').querySelectorAll('.tile').forEach(t=>t.classList.remove('selected'));
-  el.classList.add('selected'); fd.stream=s; fd.scienceSub='';
-  document.getElementById('scienceSubGroup').style.display=s==='Science'?'block':'none';
-}
-
-function selectSciSub(el,s){
-  el.closest('.tile-grid').querySelectorAll('.tile').forEach(t=>t.classList.remove('selected'));
-  el.classList.add('selected'); fd.scienceSub=s;
-}
-
-function selectAvatar(el,a){
-  document.querySelectorAll('.avatar-opt').forEach(o=>o.classList.remove('selected'));
-  el.classList.add('selected'); fd.avatar=a;
-}
-
-const sciLabels = { PCM:'PCM – Physics, Chemistry, Maths (JEE)', PCB:'PCB – Physics, Chemistry, Biology (NEET)', PCMB:'PCMB – All four (JEE + NEET)', PCM_CS:'PCM + Computer Science (Engineering/IT)' };
-
-function buildReview(){
-  const add=(l,v)=>v?`<div class="review-row"><span class="review-label">${l}</span><span class="review-value">${v}</span></div>`:'';
-  let h='';
-  h+=add('Avatar',fd.avatar); h+=add('Username',fd.username); h+=add('Email',fd.email);
-  h+=add('Role',fd.userType[0].toUpperCase()+fd.userType.slice(1));
-  if(fd.userType==='student'){
-    h+=add('Board',fd.board+(fd.stateBoard?' – '+fd.stateBoard:''));
-    h+=add('Class',fd.standard+'th Standard');
-    if(fd.stream)h+=add('Stream',fd.stream);
-    if(fd.scienceSub)h+=add('Science Combo',sciLabels[fd.scienceSub]);
-    if(fd.school)h+=add('School',fd.school);
-    if(fd.age)h+=add('Age',fd.age);
-  } else { h+=add('School',fd.school); h+=add('Board Taught',fd.teacherBoard); if(fd.teacherSubject)h+=add('Subjects',fd.teacherSubject); }
-  document.getElementById('reviewCard').innerHTML=h;
-}
-
-function showErr(msg){ const el=document.getElementById('errorMessage'); el.textContent=msg; el.classList.add('show'); setTimeout(()=>el.classList.remove('show'),3500); }
-
-function handleGoogleRegister(){ localStorage.setItem('tempGoogleUser',JSON.stringify({username:'Google User',email:'user'+Date.now()+'@gmail.com',avatar:'🎮',authProvider:'google'})); window.location.href='register.html?google=true'; }
-
-const urlParams=new URLSearchParams(window.location.search);
-if(urlParams.get('google')==='true'){
-  const tmp=JSON.parse(localStorage.getItem('tempGoogleUser')||'{}');
-  if(tmp.email){ document.getElementById('regEmail').value=tmp.email; document.getElementById('regEmail').readOnly=true; document.getElementById('regPassword').closest('.form-group').style.display='none'; }
-}
-
-function handleRegister(){
-  const e=validate(3); if(e){ showErr(e); return; }
-  const user={ username:fd.username, email:fd.email, password:fd.password||'google-oauth', avatar:fd.avatar, userType:fd.userType, authProvider:urlParams.get('google')==='true'?'google':'email', board:fd.board, stateBoard:fd.stateBoard||'', standard:fd.standard, stream:fd.stream||'', scienceSub:fd.scienceSub||'', school:fd.school||'', age:fd.age?parseInt(fd.age):null, teacherBoard:fd.teacherBoard||'', teacherSubject:fd.teacherSubject||'' };
-  const users=JSON.parse(localStorage.getItem('gamingUsers'))||[];
-  users.push(user);
-  localStorage.setItem('gamingUsers',JSON.stringify(users));
-  localStorage.setItem('currentUser',JSON.stringify(user));
-  localStorage.removeItem('tempGoogleUser');
-  window.location.href='main.html';
-}
-</script>
+    <script src="register.js"></script>
 </body>
 </html>
