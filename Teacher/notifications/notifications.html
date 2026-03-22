@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Teacher Notifications</title>
+  <link rel="stylesheet" href="notifications.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="glow glow1"></div>
+  <div class="glow glow2"></div>
+  <div class="glow glow3"></div>
+
+  <div class="notifications-page">
+    <aside class="sidebar">
+      <div class="logo-box">
+        <h1>Nexus Arena</h1>
+        <p>Teacher Panel</p>
+      </div>
+
+      <nav class="sidebar-menu">
+        <a href="../dashboard/dashboard.html" class="menu-item">Dashboard</a>
+        <a href="../profile/profile.html" class="menu-item">Profile</a>
+        <a href="../content/content.html" class="menu-item">Content Upload / Manage</a>
+        <a href="../quiz-assignment/quiz.html" class="menu-item">Quiz / Assignment Creation</a>
+        <a href="../student-analytics/analytics.html" class="menu-item">Student Analytics</a>
+        <a href="../student-report/report.html" class="menu-item">Individual Student Report</a>
+        <a href="#" class="menu-item active">Notifications</a>
+        <a href="../settings/settings.html" class="menu-item">Settings</a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar card">
+        <div>
+          <h2>NOTIFICATIONS</h2>
+          <p>View all updates, reminders, student messages, quiz alerts, and submissions in one place.</p>
+        </div>
+
+        <div class="topbar-right">
+          <div class="mini-profile">
+            <div class="mini-avatar">T</div>
+            <div>
+              <h3>Vedika45</h3>
+              <p>English / Maths Teacher</p>
+            </div>
+          </div>
+
+          <div class="badge-box">
+            <span>Unread</span>
+            <strong id="unreadCountBadge">0</strong>
+          </div>
+        </div>
+      </header>
+
+      <section class="card tabs-card">
+        <div class="section-title-row">
+          <h3>Categories / Tabs</h3>
+          <button class="clear-btn" onclick="clearAllNotifications()">Clear All</button>
+        </div>
+
+        <div class="tabs-row">
+          <button class="tab-btn active" onclick="setActiveTab('All', this)">All</button>
+          <button class="tab-btn" onclick="setActiveTab('Assignments', this)">Assignments</button>
+          <button class="tab-btn" onclick="setActiveTab('Quizzes', this)">Quizzes</button>
+          <button class="tab-btn" onclick="setActiveTab('Messages', this)">Messages</button>
+          <button class="tab-btn" onclick="setActiveTab('Feedback', this)">Feedback</button>
+          <button class="tab-btn" onclick="setActiveTab('Alerts', this)">Alerts</button>
+        </div>
+      </section>
+
+      <section class="card notifications-card">
+        <div class="section-title-row">
+          <h3>Notification List</h3>
+        </div>
+
+        <div id="notificationList" class="notification-list"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="notifications.js"></script>
+</body>
+</html>

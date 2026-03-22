@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Parent-Teacher Meetings - Nexus Arena</title>
+  <link rel="stylesheet" href="ptm.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="glow glow1"></div>
+  <div class="glow glow2"></div>
+  <div class="glow glow3"></div>
+
+  <div class="dashboard-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo-box">
+        <h1>Nexus Arena</h1>
+        <p>Teacher Panel</p>
+      </div>
+
+      <nav class="sidebar-menu">
+        <a href="../dashboard/dashboard.html" class="menu-item">Dashboard</a>
+        <!-- <a href="../profile/profile.html" class="menu-item">Profile</a> -->
+        <!-- <a href="../content/content.html" class="menu-item">Content Upload / Manage</a> -->
+        <a href="../quiz-assignment/quiz.html" class="menu-item">Quiz / Assignment Creation</a>
+        <a href="ptm.html" class="menu-item active">👥 Parent-Teacher Meetings</a>
+        <a href="../student-analytics/analytics.html" class="menu-item">Student Analytics</a>
+        <a href="../student-report/report.html" class="menu-item">Individual Student Report</a>
+        <a href="../notifications/notifications.html" class="menu-item">Notifications</a>
+        <a href="../settings/settings.html" class="menu-item">Settings</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Top Navbar -->
+      <header class="top-navbar card">
+        <div class="nav-left">
+          <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search meetings, parents, students..." />
+          </div>
+        </div>
+
+        <div class="nav-right">
+          <div class="notification-wrapper" onclick="clearNotifications()">
+            <span class="nav-icon">🔔</span>
+            <span class="badge" id="notificationCount">3</span>
+          </div>
+
+          <div class="profile-box" onclick="window.location.href='../profile/profile.html'">
+            <div class="profile-icon">T</div>
+            <div class="profile-info">
+              <h3 id="teacherName">Vedika45</h3>
+              <p>English Teacher</p>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Welcome Card -->
+      <section class="welcome-card card">
+        <div>
+          <h2>PARENT-TEACHER MEETING MANAGEMENT</h2>
+          <p>
+            Review meeting requests, schedule appointments, and maintain communication
+            with parents for student success.
+          </p>
+        </div>
+      </section>
+
+      <!-- Stats Cards -->
+      <section class="stats-grid">
+        <div class="stat-card card">
+          <div class="stat-icon">📅</div>
+          <h3 id="pendingRequests">2</h3>
+          <p>Pending Requests</p>
+        </div>
+
+        <div class="stat-card card">
+          <div class="stat-icon">✅</div>
+          <h3 id="approvedMeetings">1</h3>
+          <p>Approved Today</p>
+        </div>
+
+        <div class="stat-card card">
+          <div class="stat-icon">📞</div>
+          <h3 id="completedToday">0</h3>
+          <p>Completed Today</p>
+        </div>
+
+        <div class="stat-card card">
+          <div class="stat-icon">⏰</div>
+          <h3 id="upcomingToday">1</h3>
+          <p>Upcoming Today</p>
+        </div>
+      </section>
+
+      <!-- Meeting Requests -->
+      <section class="card section-card">
+        <div class="section-header">
+          <h3>📋 Meeting Requests</h3>
+          <div class="filter-tabs">
+            <button class="tab-btn active" onclick="filterRequests('all')">All</button>
+            <button class="tab-btn" onclick="filterRequests('pending')">Pending</button>
+            <button class="tab-btn" onclick="filterRequests('urgent')">Urgent</button>
+          </div>
+        </div>
+
+        <div class="requests-list" id="requestsList">
+          <!-- Meeting requests will be loaded here -->
+        </div>
+      </section>
+
+      <!-- Today's Schedule -->
+      <section class="card section-card">
+        <div class="section-header">
+          <h3>📅 Today's Schedule</h3>
+          <div class="date-display" id="currentDate">March 13, 2026</div>
+        </div>
+
+        <div class="schedule-timeline" id="todaySchedule">
+          <!-- Today's meetings will be loaded here -->
+        </div>
+      </section>
+
+      <!-- Weekly Overview -->
+      <section class="card section-card">
+        <div class="section-header">
+          <h3>📊 Weekly Overview</h3>
+          <div class="week-nav">
+            <button class="nav-btn" onclick="previousWeek()">← Previous</button>
+            <span id="currentWeek">March 10-16, 2026</span>
+            <button class="nav-btn" onclick="nextWeek()">Next →</button>
+          </div>
+        </div>
+
+        <div class="weekly-calendar" id="weeklyCalendar">
+          <!-- Weekly calendar will be loaded here -->
+        </div>
+      </section>
+
+      <!-- Meeting History -->
+      <section class="card section-card">
+        <div class="section-header">
+          <h3>📚 Meeting History</h3>
+          <div class="history-filters">
+            <select id="historyFilter" onchange="filterHistory()">
+              <option value="all">All Meetings</option>
+              <option value="completed">Completed</option>
+              <option value="cancelled">Cancelled</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="history-list" id="meetingHistory">
+          <!-- Meeting history will be loaded here -->
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Meeting Details Modal -->
+  <div id="meetingModal" class="modal">
+    <div class="modal-content large-modal">
+      <div class="modal-header">
+        <h3 id="modalTitle">Meeting Details</h3>
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+      </div>
+      <div class="modal-body" id="meetingDetails">
+        <!-- Meeting details will be loaded here -->
+      </div>
+      <div class="modal-footer" id="modalActions">
+        <!-- Action buttons will be loaded here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Meeting Notes Modal -->
+  <div id="notesModal" class="modal">
+    <div class="modal-content large-modal">
+      <div class="modal-header">
+        <h3>Add Meeting Notes</h3>
+        <span class="close-btn" onclick="closeNotesModal()">&times;</span>
+      </div>
+      <div class="modal-body">
+        <form id="notesForm">
+          <div class="form-group">
+            <label for="meetingDuration">Meeting Duration (minutes)</label>
+            <input type="number" id="meetingDuration" min="15" max="120" value="30">
+          </div>
+
+          <div class="form-group">
+            <label for="discussionSummary">Discussion Summary</label>
+            <textarea id="discussionSummary" rows="4" placeholder="Summarize the main topics discussed..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="keyPoints">Key Points</label>
+            <textarea id="keyPoints" rows="6" placeholder="List important points discussed (one per line)..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="actionItems">Action Items</label>
+            <textarea id="actionItems" rows="6" placeholder="List agreed-upon action items (one per line)..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="nextSteps">Next Steps</label>
+            <textarea id="nextSteps" rows="3" placeholder="Outline next steps and follow-up actions..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="followUpDate">Follow-up Date (optional)</label>
+            <input type="date" id="followUpDate">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn secondary-btn" onclick="closeNotesModal()">Cancel</button>
+        <button class="btn primary-btn" onclick="saveMeetingNotes()">Save Notes</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="ptm.js"></script>
+</body>
+</html>

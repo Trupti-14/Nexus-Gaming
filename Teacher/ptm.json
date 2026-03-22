@@ -1,0 +1,127 @@
+{
+  "meetings": [
+    {
+      "id": "meeting1",
+      "meetingType": "progress",
+      "preferredDate": "2026-03-20",
+      "preferredTime": "14:00",
+      "meetingTopic": "Discuss reading and math progress",
+      "contactMethod": "virtual",
+      "childName": "Aarav Sharma",
+      "parentName": "Rajesh Sharma",
+      "status": "pending",
+      "teacherResponse": null,
+      "meetingLink": null,
+      "createdAt": "2026-03-13T10:00:00.000Z",
+      "updatedAt": "2026-03-13T10:00:00.000Z"
+    },
+    {
+      "id": "meeting2",
+      "meetingType": "general",
+      "preferredDate": "2026-03-25",
+      "preferredTime": "10:00",
+      "meetingTopic": "General progress discussion and parent concerns",
+      "contactMethod": "virtual",
+      "childName": "Aarav Sharma",
+      "parentName": "Rajesh Sharma",
+      "status": "approved",
+      "teacherResponse": "Meeting approved. Please join using the link provided.",
+      "meetingLink": "https://meet.google.com/abc-defg-hij",
+      "approvedAt": "2026-03-14T09:00:00.000Z",
+      "createdAt": "2026-03-12T15:30:00.000Z",
+      "updatedAt": "2026-03-14T09:00:00.000Z"
+    },
+    {
+      "id": "1773448842893",
+      "meetingType": "progress",
+      "preferredDate": "2026-03-16",
+      "preferredTime": "14:00",
+      "meetingTopic": "n",
+      "contactMethod": "virtual",
+      "childName": "Aarav Sharma",
+      "parentName": "Parent Name",
+      "submittedAt": "2026-03-14T00:40:42.889Z",
+      "status": "pending",
+      "teacherResponse": null,
+      "meetingLink": null,
+      "createdAt": "2026-03-14T00:40:42.893Z",
+      "updatedAt": "2026-03-14T00:40:42.893Z"
+    },
+    {
+      "id": "1773449020910",
+      "meetingType": "progress",
+      "preferredDate": "2026-03-16",
+      "preferredTime": "14:00",
+      "meetingTopic": "childs progress",
+      "contactMethod": "phone",
+      "childName": "Aarav Sharma",
+      "parentName": "Parent Name",
+      "submittedAt": "2026-03-14T00:43:40.908Z",
+      "status": "pending",
+      "teacherResponse": null,
+      "meetingLink": null,
+      "createdAt": "2026-03-14T00:43:40.910Z",
+      "updatedAt": "2026-03-14T00:43:40.910Z"
+    }
+  ],
+  "history": [
+    {
+      "id": "meeting3",
+      "meetingType": "progress",
+      "preferredDate": "2026-02-15",
+      "preferredTime": "14:00",
+      "meetingTopic": "Monthly progress review",
+      "contactMethod": "in-person",
+      "childName": "Aarav Sharma",
+      "parentName": "Rajesh Sharma",
+      "status": "completed",
+      "duration": "30 minutes",
+      "teacher": "Mrs. Vedika",
+      "discussion": "Discussed Aarav's academic progress in reading and mathematics. Reviewed recent quiz scores and homework completion.",
+      "keyPoints": [
+        "Aarav has improved significantly in phonics recognition",
+        "Math skills are developing well, especially number recognition",
+        "Needs more practice with basic addition and subtraction",
+        "Reading comprehension is progressing steadily"
+      ],
+      "actionItems": [
+        "Parent to practice reading with Aarav 15 minutes daily",
+        "Teacher will provide additional math worksheets",
+        "Schedule follow-up meeting in one month",
+        "Parent to monitor homework completion"
+      ],
+      "nextSteps": "Continue with current learning plan. Monitor progress and adjust as needed.",
+      "completedAt": "2026-02-15T14:30:00.000Z",
+      "createdAt": "2026-02-10T11:00:00.000Z"
+    },
+    {
+      "id": "meeting4",
+      "meetingType": "behavior",
+      "preferredDate": "2026-01-28",
+      "preferredTime": "11:00",
+      "meetingTopic": "Classroom behavior and social interactions",
+      "contactMethod": "virtual",
+      "childName": "Aarav Sharma",
+      "parentName": "Rajesh Sharma",
+      "status": "completed",
+      "duration": "25 minutes",
+      "teacher": "Mrs. Vedika",
+      "discussion": "Discussed classroom behavior and social interactions. Reviewed positive behavior reinforcement strategies.",
+      "keyPoints": [
+        "Aarav is generally well-behaved in class",
+        "Occasionally distracted during group activities",
+        "Responds well to positive reinforcement",
+        "Good peer interactions with classmates"
+      ],
+      "actionItems": [
+        "Implement star chart system at home for good behavior",
+        "Teacher will use more positive reinforcement in class",
+        "Parent to discuss classroom expectations with Aarav",
+        "Monitor progress over next two weeks"
+      ],
+      "nextSteps": "Continue positive reinforcement approach. Follow up if behavior issues persist.",
+      "completedAt": "2026-01-28T11:25:00.000Z",
+      "createdAt": "2026-01-25T09:15:00.000Z"
+    }
+  ]
+}

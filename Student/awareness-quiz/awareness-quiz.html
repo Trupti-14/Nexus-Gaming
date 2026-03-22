@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Awareness Quiz | Nexus Arena</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Rajdhani:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="awareness-quiz.css" />
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="glow glow1"></div>
+  <div class="glow glow2"></div>
+  <div class="glow glow3"></div>
+
+  <div class="content-page">
+    <aside class="sidebar">
+      <div class="logo-box">
+        <h1>NEXUS ARENA</h1>
+        <p>Gamified learning for smart and safe students</p>
+      </div>
+
+      <nav class="sidebar-menu">
+  <a href="../dashboard/dashboard.html" class="menu-item">🏠 Dashboard</a>
+  <a href="../profile/profile.html" class="menu-item">👤 Profile</a>
+  <a href="../awareness/awareness.html" class="menu-item">🛡️ Awareness Module</a>
+  <a href="../education/subjects.html" class="menu-item">📘 Education Module</a>
+  <a href="/adaptive-test/" class="menu-item">🧮 Adaptive Math Test</a>
+  <a href="../achievements/achievements.html" class="menu-item">🏆 Achievements</a>
+  <a href="../leaderboard/leaderboard.html" class="menu-item">📊 Leaderboard</a>
+  <a href="../notifications/notifications.html" class="menu-item">🔔 Notifications</a>
+  <a href="../settings/settings.html" class="menu-item">⚙️ Settings</a>
+</nav>
+    </aside>
+
+    <main class="main-content">
+      <section class="card topbar">
+        <div>
+          <h2>Awareness Quiz Challenge</h2>
+          <p>Test your understanding through interactive questions and safe decision scenarios.</p>
+        </div>
+
+        <div class="topbar-right">
+          <button class="top-icon-btn">🔔</button>
+
+          <div class="mini-profile">
+            <div class="mini-avatar">S</div>
+            <div>
+              <h3>Student</h3>
+              <p>Level 4 Explorer</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card quiz-hero-card">
+        <div class="quiz-hero-left">
+          <span class="topic-badge">Awareness Quiz</span>
+          <h1 id="quizTopicTitle">Internet Safety & Smart Choices</h1>
+          <p class="topic-desc">
+            Solve multiple-choice questions and real-life online safety scenarios.
+            Score high to unlock bonus XP and earn a strong teacher review.
+          </p>
+
+          <div class="topic-meta">
+            <span class="meta-pill">🎯 5 Questions</span>
+            <span class="meta-pill">⏱️ 2 Minutes</span>
+            <span class="meta-pill">⭐ Scenario Based</span>
+          </div>
+        </div>
+
+        <div class="xp-card">
+          <h3>Quiz Reward</h3>
+          <p>Complete this quiz to earn</p>
+          <span>+120 XP</span>
+        </div>
+      </section>
+
+      <section class="quiz-page-grid">
+        <div class="left-column">
+          <div class="card quiz-card">
+            <div class="section-title-row">
+              <h3>Quiz Zone</h3>
+              <div class="quiz-top-right">
+                <span class="question-badge" id="questionIndicator">Question 1 / 5</span>
+                <span class="timer-badge" id="timer">02:00</span>
+              </div>
+            </div>
+
+            <div class="quiz-progress-wrap">
+              <div class="quiz-progress-bar">
+                <div class="quiz-progress-fill" id="quizProgressFill"></div>
+              </div>
+            </div>
+
+            <div class="question-card">
+              <div class="question-meta-row">
+                <span class="question-type" id="questionType">MCQ</span>
+                <span class="difficulty-pill">Easy</span>
+              </div>
+
+              <h2 class="question-text" id="questionText">Loading question...</h2>
+
+              <div class="scenario-box hidden" id="scenarioBox">
+                <h4>Scenario</h4>
+                <p id="scenarioText"></p>
+              </div>
+
+              <div class="options-list" id="optionsList"></div>
+            </div>
+
+            <div class="nav-controls">
+              <button class="action-btn outline-btn" id="prevBtn">⬅ Previous</button>
+              <button class="action-btn quiz-btn" id="nextBtn">Next ➜</button>
+              <button class="action-btn complete-btn hidden" id="submitBtn">✅ Submit Quiz</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="right-column">
+          <div class="card side-card">
+            <div class="section-title-row">
+              <h3>Quiz Summary</h3>
+              <span class="summary-chip">Ready</span>
+            </div>
+
+            <p class="summary-text">
+              Answer each question carefully. Some questions include short scenarios
+              where you have to choose the safest action.
+            </p>
+
+            <div class="mini-stat-list">
+              <div class="mini-stat-box">
+                <h4 id="answeredCount">0</h4>
+                <p>Answered</p>
+              </div>
+              <div class="mini-stat-box">
+                <h4 id="remainingCount">5</h4>
+                <p>Remaining</p>
+              </div>
+              <div class="mini-stat-box">
+                <h4 id="currentScore">0</h4>
+                <p>Current Score</p>
+              </div>
+              <div class="mini-stat-box">
+                <h4>120 XP</h4>
+                <p>Reward</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card side-card">
+            <div class="section-title-row">
+              <h3>Question Tracker</h3>
+              <span class="progress-status">Live Progress</span>
+            </div>
+
+            <div class="question-nav-grid" id="questionNavGrid"></div>
+          </div>
+
+          <div class="card side-card">
+            <div class="section-title-row">
+              <h3>Quick Safety Tips</h3>
+              <span class="live-indicator">Stay Alert</span>
+            </div>
+
+            <div class="tips-list">
+              <div class="tip-item">
+                <span>🔐</span>
+                <div>
+                  <h4>Never share passwords</h4>
+                  <p>Keep your account details private and safe.</p>
+                </div>
+              </div>
+
+              <div class="tip-item">
+                <span>👨‍👩‍👧</span>
+                <div>
+                  <h4>Tell a trusted adult</h4>
+                  <p>If something feels unsafe online, report it quickly.</p>
+                </div>
+              </div>
+
+              <div class="tip-item">
+                <span>⚠️</span>
+                <div>
+                  <h4>Think before you click</h4>
+                  <p>Unknown links and messages can be dangerous.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="result-overlay hidden" id="resultOverlay">
+    <div class="result-popup card">
+      <div class="popup-top">
+        <span class="result-badge">Quiz Complete</span>
+        <h2>Your Result</h2>
+        <p>You completed the awareness challenge successfully.</p>
+      </div>
+
+      <div class="result-score-box">
+        <div class="score-circle">
+          <span id="finalScoreText">0/5</span>
+        </div>
+        <h3 id="finalPercentText">0%</h3>
+      </div>
+
+      <div class="star-rating" id="starRating">☆☆☆☆☆</div>
+
+      <div class="teacher-review">
+        <h4>Teacher Review</h4>
+        <p id="teacherReviewText">Good effort. Keep learning and stay safe online.</p>
+      </div>
+
+      <div class="popup-actions">
+        <button class="action-btn outline-btn" id="retryBtn">🔄 Play Again</button>
+        <a href="../awareness/awareness.html" class="action-btn quiz-btn" id="nextTopicBtn">🚀 Continue</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="awareness-quiz.js"></script>
+</body>
+</html>

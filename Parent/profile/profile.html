@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Parent Profile - Nexus Arena</title>
+  <link rel="stylesheet" href="profile.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="profile-layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <h2>Nexus <span>Arena</span></h2>
+      </div>
+
+      <nav class="sidebar-menu">
+  <a href="../dashboard/dashboard.html" class="menu-item">🏠 Dashboard</a>
+  <a href="../progress/progress.html" class="menu-item">📈 Child Progress Detail</a>
+  <a href="../guidance/guidance.html" class="menu-item">📘 Parent Awareness / Guidance</a>
+</nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+      <!-- Top Navbar -->
+      <header class="top-navbar glass-card">
+        <div class="navbar-left">
+          <h1 class="brand-title">PARENT PROFILE</h1>
+        </div>
+
+        <div class="navbar-right">
+          <button class="nav-btn" id="notificationBtn">🔔</button>
+          <button class="nav-btn" id="settingsBtn">⚙️</button>
+
+          <div class="parent-profile-mini" onclick="goToProfile()" style="cursor: pointer;">
+  <div class="avatar-mini" id="avatarLetter">P</div>
+  <div>
+    <h3 id="topParentName">Parent Name</h3>
+    <p>Support Child Learning</p>
+  </div>
+</div>
+
+          <button class="logout-btn" id="logoutBtn">Logout</button>
+        </div>
+      </header>
+
+      <!-- Profile Header -->
+      <section class="profile-header glass-card">
+        <div class="profile-header-left">
+          <div class="profile-photo" id="profilePhoto">P</div>
+          <div class="profile-main-info">
+            <h2 id="parentName">Parent Name</h2>
+            <p id="parentEmail">parent@email.com</p>
+            <span class="profile-badge">Linked Parent Account</span>
+          </div>
+        </div>
+
+        <div class="profile-header-right">
+          <button class="action-btn" id="editProfileBtn">Edit Profile</button>
+          <button class="secondary-btn" id="changePasswordBtn">Change Password</button>
+        </div>
+      </section>
+
+      <!-- Main Grid -->
+      <section class="profile-grid">
+
+        <!-- Personal Info -->
+        <div class="section-card glass-card">
+          <div class="section-header">
+            <h2>Personal Info</h2>
+          </div>
+
+          <form id="profileForm" class="form-grid">
+            <div class="input-group">
+              <label for="fullName">Full Name</label>
+              <input type="text" id="fullName" value="Mrs. Sharma" disabled />
+            </div>
+
+            <div class="input-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" value="mrs.sharma@gmail.com" disabled />
+            </div>
+
+            <div class="input-group full-width">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" value="+91 9876543210" disabled />
+            </div>
+          </form>
+        </div>
+
+        <!-- Child Information -->
+        <div class="section-card glass-card">
+          <div class="section-header">
+            <h2>Child Information</h2>
+          </div>
+
+          <div class="info-list">
+            <div class="info-item">
+              <span class="info-label">Child Name</span>
+              <span class="info-value" id="childName">Aarav Sharma</span>
+            </div>
+
+            <div class="info-item">
+              <span class="info-label">Class / Standard</span>
+              <span class="info-value" id="childClass">1st</span>
+            </div>
+
+            <div class="info-item">
+              <span class="info-label">Student ID</span>
+              <span class="info-value" id="studentId">STU-1024</span>
+            </div>
+
+            <div class="info-item">
+              <span class="info-label">School / Platform ID</span>
+              <span class="info-value" id="platformId">NG-UKG-2201</span>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Notification Preferences -->
+      <section class="section-card glass-card preferences-section">
+        <div class="section-header">
+          <h2>Notification Preferences</h2>
+        </div>
+
+        <div class="toggle-list">
+          <div class="toggle-item">
+            <div>
+              <h3>Email Notifications</h3>
+              <p>Receive updates through email</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="emailToggle" checked />
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="toggle-item">
+            <div>
+              <h3>App Notifications</h3>
+              <p>Get alerts inside the platform</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="appToggle" checked />
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="toggle-item">
+            <div>
+              <h3>Progress Alerts</h3>
+              <p>Get notified about child performance updates</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="progressToggle" checked />
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <!-- Password Section -->
+      <section class="section-card glass-card">
+        <div class="section-header">
+          <h2>Change Password</h2>
+        </div>
+
+        <form id="passwordForm" class="form-grid">
+          <div class="input-group">
+            <label for="currentPassword">Current Password</label>
+            <input type="password" id="currentPassword" placeholder="Enter current password" />
+          </div>
+
+          <div class="input-group">
+            <label for="newPassword">New Password</label>
+            <input type="password" id="newPassword" placeholder="Enter new password" />
+          </div>
+
+          <div class="input-group full-width">
+            <label for="confirmPassword">Confirm New Password</label>
+            <input type="password" id="confirmPassword" placeholder="Confirm new password" />
+          </div>
+
+          <div class="full-width button-row">
+            <button type="submit" class="action-btn">Update Password</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Action Buttons -->
+      <section class="action-section">
+        <button class="action-btn" id="saveChangesBtn">Save Changes</button>
+        <button class="secondary-btn" id="cancelBtn">Cancel</button>
+      </section>
+
+      <div id="messageBox" class="message-box"></div>
+
+    </main>
+  </div>
+
+  <script src="profile.js"></script>
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Signup | Nexus Arena</title>
+  <link rel="stylesheet" href="signup.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="signup-page">
+
+    <!-- Background -->
+    <div class="bg-glow glow-1"></div>
+    <div class="bg-glow glow-2"></div>
+    <div class="grid-overlay"></div>
+
+    <!-- Navbar -->
+    <header class="navbar">
+      <div class="logo-section">
+        <div class="logo-circle">N</div>
+        <div class="logo-text">
+          <h2>Nexus <span>Arena</span></h2>
+          <p>Learn • Play • Grow</p>
+        </div>
+      </div>
+
+      <nav class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="../about/about.html">About</a>
+        <a href="../login/login.html">Login</a>
+      </nav>
+    </header>
+
+    <!-- Signup Wrapper -->
+    <main class="signup-wrapper">
+      <!-- Left Visual -->
+      <section class="signup-visual-section">
+        <div class="visual-card">
+          <div class="visual-badge">Start Your Journey</div>
+          <h2>Join Nexus Arena Today</h2>
+          <p>
+            Create your account and enter a world where learning becomes interactive,
+            progress becomes visible, and education becomes exciting for everyone.
+          </p>
+
+          <div class="visual-highlights">
+            <div class="highlight-box">
+              <span>🎓</span>
+              <p>Student Learning</p>
+            </div>
+            <div class="highlight-box">
+              <span>👩‍🏫</span>
+              <p>Teacher Tools</p>
+            </div>
+            <div class="highlight-box">
+              <span>👨‍👩‍👧</span>
+              <p>Parent Tracking</p>
+            </div>
+            <div class="highlight-box">
+              <span>🚀</span>
+              <p>Growth & Rewards</p>
+            </div>
+          </div>
+
+          <div class="info-panel">
+            <div class="info-item">
+              <h4>Interactive</h4>
+              <p>Gamified modules for better engagement</p>
+            </div>
+            <div class="info-item">
+              <h4>Connected</h4>
+              <p>One place for students, teachers, and parents</p>
+            </div>
+            <div class="info-item">
+              <h4>Future Ready</h4>
+              <p>Built for smart and meaningful learning</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Right Form -->
+      <section class="signup-form-section">
+        <div class="form-card">
+          <div class="form-badge">Create Account</div>
+          <h1>Sign up for <span>Nexus Arena</span></h1>
+          <p class="form-subtitle">
+            Fill in your details to create your account and begin your experience.
+          </p>
+
+          <form id="signupForm" novalidate>
+            <div class="input-group">
+              <label for="fullName">Full Name</label>
+              <input
+                type="text"
+                id="fullName"
+                name="fullName"
+                placeholder="Enter your full name"
+              />
+              <small class="error-text" id="fullNameError"></small>
+            </div>
+
+            <div class="input-group">
+              <label for="email">Email</label>
+              <input
+                type="text"
+                id="email"
+                name="email"
+                placeholder="Enter your email address"
+              />
+              <small class="error-text" id="emailError"></small>
+            </div>
+
+            <div class="input-group">
+              <label for="phone">Phone Number <span class="optional">(Optional)</span></label>
+              <input
+                type="text"
+                id="phone"
+                name="phone"
+                placeholder="Enter your phone number"
+              />
+              <small class="error-text" id="phoneError"></small>
+            </div>
+
+            <div class="input-group">
+              <label>Select Role</label>
+              <div class="role-selection">
+                <label class="role-card">
+                  <input type="radio" name="role" value="student" />
+                  <span>🎓 Student</span>
+                </label>
+
+                <label class="role-card">
+                  <input type="radio" name="role" value="teacher" />
+                  <span>👩‍🏫 Teacher</span>
+                </label>
+
+                <label class="role-card">
+                  <input type="radio" name="role" value="parent" />
+                  <span>👨‍👩‍👧 Parent</span>
+                </label>
+              </div>
+              <small class="error-text" id="roleError"></small>
+            </div>
+
+            <div class="input-group">
+              <label for="password">Password</label>
+              <div class="password-wrap">
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  placeholder="Create a password"
+                />
+                <button type="button" class="toggle-password" data-target="password">
+                  Show
+                </button>
+              </div>
+              <div class="password-strength">
+                <div class="strength-bar" id="strengthBar"></div>
+              </div>
+              <small class="strength-text" id="strengthText">Password strength</small>
+              <small class="error-text" id="passwordError"></small>
+            </div>
+
+            <div class="input-group">
+              <label for="confirmPassword">Confirm Password</label>
+              <div class="password-wrap">
+                <input
+                  type="password"
+                  id="confirmPassword"
+                  name="confirmPassword"
+                  placeholder="Confirm your password"
+                />
+                <button type="button" class="toggle-password" data-target="confirmPassword">
+                  Show
+                </button>
+              </div>
+              <small class="error-text" id="confirmPasswordError"></small>
+            </div>
+
+            <button type="submit" class="btn btn-primary signup-btn">Create Account</button>
+
+            <p class="form-message" id="formMessage"></p>
+
+            <p class="login-text">
+              Already have an account?
+              <a href="../login/login.html">Login</a>
+            </p>
+          </form>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="signup.js"></script>
+</body>
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Parent Dashboard - Nexus Gaming</title>
+  <link rel="stylesheet" href="dashboard.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="dashboard-layout">
+    
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <h2>NEXUS <span>GAMING</span></h2>
+      </div>
+
+      <nav class="sidebar-menu">
+  <a href="../dashboard/dashboard.html" class="menu-item">🏠 Dashboard</a>
+  <a href="../progress/progress.html" class="menu-item">📈 Child Progress Detail</a>
+  <a href="../guidance/guidance.html" class="menu-item">📘 Parent Awareness / Guidance</a>
+  <a href="../ptm/ptm.html" class="menu-item">👥 Parent-Teacher Meeting</a>
+  <a href="../roadmap/roadmap.html" class="menu-item">🗺️ Learning Roadmap</a>
+  </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+      <!-- Top Navbar -->
+      <header class="top-navbar glass-card">
+        <div class="navbar-left">
+          <h1 class="brand-title">NEXUS GAMING</h1>
+        </div>
+
+        <div class="navbar-right">
+          <button class="nav-btn" id="notificationBtn">🔔</button>
+          <button class="nav-btn" id="settingsBtn">⚙️</button>
+
+        <div class="parent-profile" onclick="goToProfile()" style="cursor: pointer;">
+          <div class="avatar">P</div>
+          <div>
+            <h3>Parent Name</h3>
+            <p>Monitoring Child Progress</p>
+          </div>
+        </div>
+
+          <button class="logout-btn">Logout</button>
+        </div>
+      </header>
+
+      <!-- Welcome Section -->
+      <section class="welcome-section">
+        <div class="welcome-card glass-card">
+          <h2>WELCOME BACK, PARENT!</h2>
+          <p class="child-info">Child Name: Aarav | Class: 2nd</p>
+          <p class="motivation-text">Your child completed 2 activities today!</p>
+        </div>
+      </section>
+
+      <!-- Monitoring Cards -->
+      <section class="stats-section">
+        <div class="stat-card glass-card">
+          <div class="stat-icon">⭐</div>
+          <div>
+            <h3 id="childLevel">3</h3>
+            <p>Child Level</p>
+          </div>
+        </div>
+
+        <div class="stat-card glass-card">
+          <div class="stat-icon">✨</div>
+          <div>
+            <h3 id="totalXP">120</h3>
+            <p>Total XP</p>
+          </div>
+        </div>
+
+        <div class="stat-card glass-card">
+          <div class="stat-icon">🎮</div>
+          <div>
+            <h3 id="gamesPlayed">18</h3>
+            <p>Games Played</p>
+          </div>
+        </div>
+
+        <div class="stat-card glass-card">
+          <div class="stat-icon">🔥</div>
+          <div>
+            <h3 id="learningStreak">5 Days</h3>
+            <p>Learning Streak</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Subject Progress -->
+      <section class="dashboard-grid">
+        <div class="section-card glass-card">
+          <div class="section-header">
+            <h2>Subject Progress</h2>
+          </div>
+
+          <div class="subjects-container">
+            <div class="subject-card">
+              <div class="subject-top">
+                <span class="subject-icon">📘</span>
+                <div>
+                  <h3>English</h3>
+                  <p>Last activity: Alphabet Match</p>
+                </div>
+              </div>
+
+              <div class="progress-bar">
+                <div class="progress-fill english-progress" style="width: 72%;"></div>
+              </div>
+              <p class="progress-text">72% Completed</p>
+              <button class="action-btn view-progress-btn">View Progress</button>
+            </div>
+
+            <div class="subject-card">
+              <div class="subject-top">
+                <span class="subject-icon">🔢</span>
+                <div>
+                  <h3>Maths</h3>
+                  <p>Last activity: Counting Game</p>
+                </div>
+              </div>
+
+              <div class="progress-bar">
+                <div class="progress-fill maths-progress" style="width: 58%;"></div>
+              </div>
+              <p class="progress-text">58% Completed</p>
+              <button class="action-btn view-progress-btn">View Progress</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Teacher Expectations -->
+        <div class="section-card glass-card">
+          <div class="section-header">
+            <h2>Teacher Expectations</h2>
+          </div>
+
+          <div class="task-list">
+            <div class="task-item">
+              <div>
+                <h4>Practice Alphabet Game</h4>
+                <p>Due: 15 March 2026</p>
+              </div>
+              <span class="status pending">Pending</span>
+            </div>
+
+            <div class="task-item">
+              <div>
+                <h4>Complete Numbers Quiz</h4>
+                <p>Due: 16 March 2026</p>
+              </div>
+              <span class="status progress">In Progress</span>
+            </div>
+
+            <div class="task-item">
+              <div>
+                <h4>Finish Counting Activity</h4>
+                <p>Due: 17 March 2026</p>
+              </div>
+              <span class="status completed">Completed</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Recent Activity + Feedback -->
+      <section class="dashboard-grid">
+        <div class="section-card glass-card">
+          <div class="section-header">
+            <h2>Recent Activity</h2>
+          </div>
+
+          <ul class="activity-list" id="activityList">
+            <li>✅ Completed Math Game</li>
+            <li>🏅 Earned a Badge</li>
+            <li>🚀 Reached Level 2</li>
+            <li>📖 Completed English Quiz</li>
+          </ul>
+        </div>
+
+        <div class="section-card glass-card">
+          <div class="section-header">
+            <h2>Parent Feedback</h2>
+          </div>
+
+          <form id="feedbackForm">
+            <textarea
+              id="feedbackInput"
+              placeholder="Write your feedback for the teacher..."
+            ></textarea>
+            <button type="submit" class="action-btn">Send Feedback</button>
+          </form>
+
+          <div class="feedback-message" id="feedbackMessage"></div>
+        </div>
+      </section>
+
+      <!-- Achievements -->
+      <section class="section-card glass-card achievements-section">
+        <div class="section-header">
+          <h2>Achievements</h2>
+        </div>
+
+        <div class="achievement-cards">
+          <div class="achievement-card">
+            <span class="achievement-icon">🥇</span>
+            <h4>Level 2 Unlocked</h4>
+            <p>Child reached the next learning level.</p>
+          </div>
+
+          <div class="achievement-card">
+            <span class="achievement-icon">🎯</span>
+            <h4>5-Day Streak</h4>
+            <p>Consistent learning for 5 days in a row.</p>
+          </div>
+
+          <div class="achievement-card">
+            <span class="achievement-icon">📚</span>
+            <h4>English Explorer</h4>
+            <p>Completed 10 English learning tasks.</p>
+          </div>
+
+          <div class="achievement-card">
+            <span class="achievement-icon">🧠</span>
+            <h4>Maths Star</h4>
+            <p>Improved counting and number recognition.</p>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>

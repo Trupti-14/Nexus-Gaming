@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Teacher Settings</title>
+  <link rel="stylesheet" href="settings.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="glow glow1"></div>
+  <div class="glow glow2"></div>
+  <div class="glow glow3"></div>
+
+  <div class="settings-page">
+    <aside class="sidebar">
+      <div class="logo-box">
+        <h1>Nexus Arena</h1>
+        <p>Teacher Panel</p>
+      </div>
+
+      <nav class="sidebar-menu">
+        <a href="../dashboard/dashboard.html" class="menu-item">Dashboard</a>
+        <a href="../profile/profile.html" class="menu-item">Profile</a>
+        <a href="../content/content.html" class="menu-item">Content Upload / Manage</a>
+        <a href="../quiz-assignment/quiz.html" class="menu-item">Quiz / Assignment Creation</a>
+        <a href="../student-analytics/analytics.html" class="menu-item">Student Analytics</a>
+        <a href="../student-report/report.html" class="menu-item">Individual Student Report</a>
+        <a href="../notifications/notifications.html" class="menu-item">Notifications</a>
+        <a href="#" class="menu-item active">Settings</a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar card">
+        <div>
+          <h2>SETTINGS</h2>
+          <p>Manage account, notifications, privacy, theme, language, and session preferences.</p>
+        </div>
+
+        <div class="mini-profile">
+          <div class="mini-avatar">T</div>
+          <div>
+            <h3>Vedika45</h3>
+            <p>Teacher Account</p>
+          </div>
+        </div>
+      </header>
+
+      <!-- Account Settings -->
+      <section class="card settings-card">
+        <div class="section-title-row">
+          <h3>Account Settings</h3>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="teacherUsername">Username</label>
+            <input type="text" id="teacherUsername" value="Vedika45" />
+          </div>
+
+          <div class="form-group">
+            <label for="teacherEmail">Email</label>
+            <input type="email" id="teacherEmail" value="vedika45@gmail.com" />
+          </div>
+
+          <div class="form-group">
+            <label for="teacherPhone">Phone</label>
+            <input type="text" id="teacherPhone" value="+91 9876543210" />
+          </div>
+        </div>
+      </section>
+
+      <!-- Change Password -->
+      <section class="card settings-card">
+        <div class="section-title-row">
+          <h3>Password Change Form</h3>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="currentPassword">Current Password</label>
+            <input type="password" id="currentPassword" placeholder="Enter current password" />
+          </div>
+
+          <div class="form-group">
+            <label for="newPassword">New Password</label>
+            <input type="password" id="newPassword" placeholder="Enter new password" />
+          </div>
+
+          <div class="form-group">
+            <label for="confirmPassword">Confirm New Password</label>
+            <input type="password" id="confirmPassword" placeholder="Confirm new password" />
+          </div>
+        </div>
+      </section>
+
+      <!-- Notification Settings -->
+      <section class="card settings-card">
+        <div class="section-title-row">
+          <h3>Notification Settings</h3>
+        </div>
+
+        <div class="toggle-list">
+          <label class="toggle-item">
+            <span>Email Notifications</span>
+            <input type="checkbox" id="emailNotifications" checked />
+            <span class="slider"></span>
+          </label>
+
+          <label class="toggle-item">
+            <span>Assignment Alerts</span>
+            <input type="checkbox" id="assignmentAlerts" checked />
+            <span class="slider"></span>
+          </label>
+
+          <label class="toggle-item">
+            <span>Quiz Notifications</span>
+            <input type="checkbox" id="quizNotifications" checked />
+            <span class="slider"></span>
+          </label>
+
+          <label class="toggle-item">
+            <span>Student Messages</span>
+            <input type="checkbox" id="studentMessages" />
+            <span class="slider"></span>
+          </label>
+        </div>
+      </section>
+
+      <!-- Privacy Settings -->
+      <section class="card settings-card">
+        <div class="section-title-row">
+          <h3>Privacy Settings</h3>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="profileVisibility">Profile Visibility</label>
+            <select id="profileVisibility">
+              <option value="Public">Public</option>
+              <option value="Private">Private</option>
+              <option value="Teachers Only">Teachers Only</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="activityTracking">Activity Tracking</label>
+            <select id="activityTracking">
+              <option value="Enabled">Enabled</option>
+              <option value="Disabled">Disabled</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="dataSharing">Data Sharing</label>
+            <select id="dataSharing">
+              <option value="Allowed">Allowed</option>
+              <option value="Restricted">Restricted</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <!-- Theme + Language -->
+      <section class="card settings-card">
+        <div class="section-title-row">
+          <h3>Appearance & Language</h3>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="themeSelector">Theme Selector</label>
+            <select id="themeSelector">
+              <option value="Neon Dark" selected>Neon Dark</option>
+              <option value="Cyber Blue">Cyber Blue</option>
+              <option value="Purple Pulse">Purple Pulse</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="languageSelector">Language Dropdown</label>
+            <select id="languageSelector">
+              <option value="English" selected>English</option>
+              <option value="Hindi">Hindi</option>
+              <option value="Marathi">Marathi</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <!-- Buttons -->
+      <section class="action-row">
+        <button class="logout-btn" onclick="logoutUser()">Logout</button>
+        <button class="save-btn" onclick="saveSettings()">Save Changes</button>
+      </section>
+    </main>
+  </div>
+
+  <script src="settings.js"></script>
+</body>
+</html>
