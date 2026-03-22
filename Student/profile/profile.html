@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nexus Arena - Student Profile</title>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Rajdhani:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="profile.css" />
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="glow glow1"></div>
+  <div class="glow glow2"></div>
+  <div class="glow glow3"></div>
+
+  <div class="content-page">
+    <aside class="sidebar">
+      <div class="logo-box">
+        <h1>Nexus Arena</h1>
+        <p>Student Panel</p>
+      </div>
+
+      <nav class="sidebar-menu">
+        <a href="/dashboard/dashboard.html" class="menu-item">🏠 Dashboard</a>
+        <a href="/profile/profile.html" class="menu-item active">👤 Profile</a>
+        <a href="/awareness/awareness.html" class="menu-item">🛡️ Awareness Module</a>
+        <a href="/education/subjects.html" class="menu-item">📘 Education Module</a>
+        <a href="/adaptive-test/" class="menu-item">🧮 Adaptive Math Test</a>
+        <a href="/achievements/achievements.html" class="menu-item">🏆 Achievements</a>
+        <a href="/leaderboard/leaderboard.html" class="menu-item">📊 Leaderboard</a>
+        <a href="/notifications/notifications.html" class="menu-item">🔔 Notifications</a>
+        <a href="/settings/settings.html" class="menu-item">⚙️ Settings</a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <section class="card topbar">
+        <div>
+          <h2>STUDENT PROFILE</h2>
+          <p>View and update student details, avatar, and learning information.</p>
+        </div>
+
+        <div class="topbar-right">
+
+          <div class="mini-profile">
+            <div class="mini-avatar" id="topAvatar">A</div>
+            <div>
+              <h3 id="topStudentName">Aryan45</h3>
+              <p id="topStudentClass">Grade 1 Student</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card profile-header-card">
+        <div class="profile-header-left">
+          <div class="profile-avatar-large" id="profileAvatar">A</div>
+
+          <div class="profile-main-info">
+            <h3 id="profileName">Aryan45</h3>
+            <p id="profileClass">Grade 1</p>
+            <p id="profileSchool">Sunrise Kids School</p>
+          </div>
+        </div>
+
+        <div class="profile-header-actions">
+          <button class="table-btn preview-btn" id="changeAvatarBtn">Change Avatar</button>
+          <button class="save-btn" id="editProfileBtn">Edit Profile</button>
+        </div>
+      </section>
+
+      <section class="profile-grid">
+        <div class="left-column">
+          <div class="card form-card">
+            <div class="section-title-row">
+              <h3>Personal Details</h3>
+            </div>
+
+            <div class="form-grid">
+              <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" id="fullName" disabled />
+              </div>
+
+              <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="email" disabled />
+              </div>
+
+              <div class="form-group">
+                <label>Mobile Number</label>
+                <input type="text" id="mobile" disabled />
+              </div>
+
+              <div class="form-group">
+                <label>Date of Birth</label>
+                <input type="date" id="dob" disabled />
+              </div>
+
+              <div class="form-group">
+                <label>Gender</label>
+                <select id="gender" disabled>
+                  <option value="">Select Gender</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="card form-card">
+            <div class="section-title-row">
+              <h3>Academic Details</h3>
+            </div>
+
+            <div class="form-grid academic-grid">
+              <div class="form-group">
+                <label>Class / Standard</label>
+                <input type="text" id="studentClassInput" disabled />
+              </div>
+
+              <div class="form-group">
+                <label>School</label>
+                <input type="text" id="school" disabled />
+              </div>
+
+              <div class="form-group">
+                <label>Favorite Subject</label>
+                <select id="favoriteSubject" disabled>
+                  <option value="">Select Subject</option>
+                  <option value="Maths">Maths</option>
+                  <option value="English">English</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="right-column">
+          <div class="card achievement-card">
+            <div class="section-title-row">
+              <h3>Achievement Snapshot</h3>
+            </div>
+
+            <div class="achievement-list">
+              <div class="achievement-item">
+                <span class="achievement-icon">⭐</span>
+                <div>
+                  <h4 id="starsEarned">120</h4>
+                  <p>Stars Earned</p>
+                </div>
+              </div>
+
+              <div class="achievement-item">
+                <span class="achievement-icon">🏆</span>
+                <div>
+                  <h4 id="badgesCount">8</h4>
+                  <p>Badges</p>
+                </div>
+              </div>
+
+              <div class="achievement-item">
+                <span class="achievement-icon">🥇</span>
+                <div>
+                  <h4 id="rankValue">12</h4>
+                  <p>Rank</p>
+                </div>
+              </div>
+
+              <div class="achievement-item">
+                <span class="achievement-icon">🔥</span>
+                <div>
+                  <h4 id="streakValue">5</h4>
+                  <p>Learning Streak</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card action-card">
+            <div class="section-title-row">
+              <h3>Actions</h3>
+            </div>
+
+            <div class="action-grid">
+              <button class="save-btn full-btn" id="saveBtn">Save Changes</button>
+              <button class="cancel-btn full-btn" id="cancelBtn">Cancel</button>
+              <button class="table-btn edit-btn full-btn" id="avatarBtnBottom">Change Avatar</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="profile.js"></script>
+</body>
+</html>

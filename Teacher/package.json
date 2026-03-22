@@ -1,0 +1,13 @@
+{
+  "name": "teacher-dashboard",
+  "version": "1.0.0",
+  "description": "Teacher Dashboard Web Application",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["teacher", "dashboard", "education"],
+  "author": "Nexus Arena",
+  "license": "MIT"
+}

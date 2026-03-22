@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Parent Awareness / Guidance - Nexus Arena</title>
+  <link rel="stylesheet" href="guidance.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="guidance-layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <h2>Nexus <span>Arena</span></h2>
+      </div>
+
+      <nav class="sidebar-menu">
+  <a href="../dashboard/dashboard.html" class="menu-item">🏠 Dashboard</a>
+  <a href="../progress/progress.html" class="menu-item">📈 Child Progress Detail</a>
+  <a href="../guidance/guidance.html" class="menu-item">📘 Parent Awareness / Guidance</a>
+</nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+      <!-- Top Navbar -->
+      <header class="top-navbar glass-card">
+        <div class="navbar-left">
+          <h1 class="brand-title">PARENT AWARENESS / GUIDANCE</h1>
+        </div>
+
+        <div class="navbar-right">
+          <button class="nav-btn" id="notificationBtn">🔔</button>
+          <button class="nav-btn" id="settingsBtn">⚙️</button>
+
+          <div class="parent-profile-mini" onclick="goToProfile()" style="cursor: pointer;">
+  <div class="avatar-mini" id="avatarLetter">P</div>
+  <div>
+    <h3 id="topParentName">Parent Name</h3>
+    <p>Support Child Learning</p>
+  </div>
+</div>
+
+          <button class="logout-btn" id="logoutBtn">Logout</button>
+        </div>
+      </header>
+
+      <!-- Hero Section -->
+      <section class="hero-card glass-card">
+        <div class="hero-left">
+          <h2>GUIDE YOUR CHILD WITH CONFIDENCE</h2>
+          <p>
+            Explore simple learning tips, child development ideas, and home activities
+            that make English and Maths more fun and effective.
+          </p>
+          <div class="hero-tags">
+            <span>English Support</span>
+            <span>Maths Practice</span>
+            <span>Home Learning</span>
+          </div>
+        </div>
+        <div class="hero-right">
+          <div class="hero-icon">📘</div>
+        </div>
+      </section>
+
+      <!-- Search and Filter -->
+      <section class="tools-row">
+        <div class="section-card glass-card search-card">
+          <div class="search-box">
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Search tips, videos, or activities..."
+            />
+            <button class="action-btn" id="searchBtn">Search</button>
+          </div>
+        </div>
+
+        <div class="section-card glass-card filter-card">
+          <div class="filter-group">
+            <label for="categoryFilter">Category</label>
+            <select id="categoryFilter">
+              <option value="all">All</option>
+              <option value="tips">Learning Tips</option>
+              <option value="videos">Short Videos</option>
+              <option value="activities">Recommended Activities</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <!-- Learning Tips -->
+      <section class="section-card glass-card">
+        <div class="section-header">
+          <h2>Learning Tips</h2>
+        </div>
+
+        <div class="card-grid" id="tipsContainer">
+          <div class="guide-card" data-category="tips" data-title="How to teach counting at home">
+            <div class="guide-icon">🔢</div>
+            <h3>How to Teach Counting at Home</h3>
+            <p>
+              Use toys, fruits, or daily household objects to make counting natural and fun.
+            </p>
+            <button class="secondary-btn read-more-btn">Read More</button>
+          </div>
+
+          <div class="guide-card" data-category="tips" data-title="Fun English learning games">
+            <div class="guide-icon">📚</div>
+            <h3>Fun English Learning Games</h3>
+            <p>
+              Try letter matching, rhyming words, and picture-word connection games.
+            </p>
+            <button class="secondary-btn read-more-btn">Read More</button>
+          </div>
+
+          <div class="guide-card" data-category="tips" data-title="Build a daily learning habit">
+            <div class="guide-icon">⏰</div>
+            <h3>Build a Daily Learning Habit</h3>
+            <p>
+              Give your child a short and regular routine of 10–15 minutes every day.
+            </p>
+            <button class="secondary-btn read-more-btn">Read More</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Short Videos -->
+      <section class="section-card glass-card">
+        <div class="section-header">
+          <h2>Short Videos</h2>
+        </div>
+
+        <div class="card-grid" id="videosContainer">
+          <div class="video-card" data-category="videos" data-title="Counting through daily objects">
+            <div class="video-thumb">🎥</div>
+            <h3>Counting Through Daily Objects</h3>
+            <p>2 min guidance for helping children count using real items at home.</p>
+            <button class="action-btn watch-btn">Watch Video</button>
+          </div>
+
+          <div class="video-card" data-category="videos" data-title="Phonics practice for beginners">
+            <div class="video-thumb">🎬</div>
+            <h3>Phonics Practice for Beginners</h3>
+            <p>Simple phonics tricks to improve English sound recognition.</p>
+            <button class="action-btn watch-btn">Watch Video</button>
+          </div>
+
+          <div class="video-card" data-category="videos" data-title="Encouraging children with praise">
+            <div class="video-thumb">▶️</div>
+            <h3>Encouraging Children with Praise</h3>
+            <p>Learn how small appreciation can improve a child’s motivation.</p>
+            <button class="action-btn watch-btn">Watch Video</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Recommended Activities -->
+      <section class="section-card glass-card">
+        <div class="section-header">
+          <h2>Recommended Activities</h2>
+        </div>
+
+        <div class="activities-list" id="activitiesContainer">
+          <div class="activity-item" data-category="activities" data-title="Alphabet hunt game">
+            <div class="activity-left">
+              <span class="activity-icon">🔤</span>
+              <div>
+                <h3>Alphabet Hunt Game</h3>
+                <p>Ask your child to find objects at home starting with a chosen letter.</p>
+              </div>
+            </div>
+            <button class="secondary-btn save-btn">Save</button>
+          </div>
+
+          <div class="activity-item" data-category="activities" data-title="Count and sort toys">
+            <div class="activity-left">
+              <span class="activity-icon">🧸</span>
+              <div>
+                <h3>Count and Sort Toys</h3>
+                <p>Group toys by color or size and count them together.</p>
+              </div>
+            </div>
+            <button class="secondary-btn save-btn">Save</button>
+          </div>
+
+          <div class="activity-item" data-category="activities" data-title="Word and picture match">
+            <div class="activity-left">
+              <span class="activity-icon">🖼️</span>
+              <div>
+                <h3>Word and Picture Match</h3>
+                <p>Match easy words with simple pictures to improve recognition.</p>
+              </div>
+            </div>
+            <button class="secondary-btn save-btn">Save</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Modal -->
+      <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-box glass-card">
+          <button class="close-modal" id="closeModalBtn">✖</button>
+          <h2 id="modalTitle">Guidance Detail</h2>
+          <p id="modalContent">
+            Guidance content will appear here.
+          </p>
+        </div>
+      </div>
+
+      <div id="messageBox" class="message-box"></div>
+    </main>
+  </div>
+
+  <script src="guidance.js"></script>
+</body>
+</html>

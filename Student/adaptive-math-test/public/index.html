@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nexus Arena - Adaptive Math Test</title>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Rajdhani:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="adaptive-test.css" />
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="glow glow1"></div>
+  <div class="glow glow2"></div>
+  <div class="glow glow3"></div>
+
+  <div class="content-page">
+    <aside class="sidebar">
+      <div class="logo-box">
+        <h1>Nexus Arena</h1>
+        <p>Student Panel</p>
+      </div>
+
+      <nav class="sidebar-menu">
+        <a href="/dashboard/dashboard.html" class="menu-item">🏠 Dashboard</a>
+        <a href="/profile/profile.html" class="menu-item">👤 Profile</a>
+        <a href="/awareness/awareness.html" class="menu-item">🛡️ Awareness Module</a>
+        <a href="/education/subjects.html" class="menu-item">📘 Education Module</a>
+        <a href="/adaptive-test/" class="menu-item active">🧮 Adaptive Math Test</a>
+        <a href="/achievements/achievements.html" class="menu-item">🏆 Achievements</a>
+        <a href="/leaderboard/leaderboard.html" class="menu-item">📊 Leaderboard</a>
+        <a href="/notifications/notifications.html" class="menu-item">🔔 Notifications</a>
+        <a href="/settings/settings.html" class="menu-item">⚙️ Settings</a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <section class="card topbar">
+        <div>
+          <h2>ADAPTIVE MATH TEST</h2>
+          <p>Test your mathematical skills with our intelligent adaptive system that adjusts difficulty based on your performance.</p>
+        </div>
+
+        <div class="score-display">
+          <div class="star-chip">
+            <span>⭐</span>
+            <strong id="score">0</strong>
+          </div>
+          <div class="progress-info">
+            <span id="question-counter">Question 1</span>
+            <span id="difficulty-level">Difficulty: Medium</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="card question-card">
+        <div id="questionBox">
+          <h3>Loading your first question...</h3>
+          <p>Click "Start Test" to begin!</p>
+          <button class="option-btn" onclick="loadQuestion()" style="margin-top: 24px;">Start Test</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

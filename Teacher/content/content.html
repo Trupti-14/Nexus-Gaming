@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Teacher Content Upload / Manage</title>
+  <link rel="stylesheet" href="content.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="glow glow1"></div>
+  <div class="glow glow2"></div>
+  <div class="glow glow3"></div>
+
+  <div class="content-page">
+    <aside class="sidebar">
+      <div class="logo-box">
+        <h1>Nexus Arena</h1>
+        <p>Teacher Panel</p>
+      </div>
+
+      <nav class="sidebar-menu">
+        <a href="../dashboard/dashboard.html" class="menu-item">Dashboard</a>
+        <a href="../profile/profile.html" class="menu-item">Profile</a>
+        <a href="#" class="menu-item active">Content Upload / Manage</a>
+        <a href="../quiz-assignment/quiz.html" class="menu-item">Quiz / Assignment Creation</a>
+        <a href="../student-analytics/analytics.html" class="menu-item">Student Analytics</a>
+        <a href="../student-report/report.html" class="menu-item">Individual Student Report</a>
+        <a href="../notifications/notifications.html" class="menu-item">Notifications</a>
+        <a href="../settings/settings.html" class="menu-item">Settings</a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar card">
+        <div>
+          <h2>CONTENT UPLOAD / MANAGE</h2>
+          <p>Upload and manage learning content for 4th, 5th, and 6st standard students.</p>
+        </div>
+
+        <div class="mini-profile">
+          <div class="mini-avatar">T</div>
+          <div>
+            <h3>Vedika45</h3>
+            <p>English / Maths Teacher</p>
+          </div>
+        </div>
+      </header>
+
+      <section class="card form-card">
+        <div class="section-title-row">
+          <h3>Upload Content Form</h3>
+        </div>
+
+        <form id="contentForm">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="standard">Standard</label>
+              <select id="standard" required>
+                <option value="">Select Standard</option>
+                <option value="LKG">4th</option>
+                <option value="UKG">5th</option>
+                <option value="1st">6th Standard</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <select id="subject" required>
+                <option value="">Select Subject</option>
+                <option value="English">English</option>
+                <option value="Maths">Maths</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="chapter">Topic / Chapter</label>
+              <select id="chapter" required>
+                <option value="">Select Topic</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="contentType">Content Type</label>
+              <select id="contentType" required>
+                <option value="Notes">Notes</option>
+                <option value="PDF">PDF</option>
+                <option value="Video">Video</option>
+                <option value="PPT">PPT</option>
+                <option value="External Link">External Link</option>
+              </select>
+            </div>
+
+            <div class="form-group full-width">
+              <label for="topicTitle">Content Title</label>
+              <input type="text" id="topicTitle" placeholder="Enter content title" required />
+            </div>
+
+            <div class="form-group full-width">
+              <label for="description">Description</label>
+              <textarea id="description" rows="4" placeholder="Enter content description"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="fileUpload">File Upload</label>
+              <input type="file" id="fileUpload" />
+            </div>
+
+            <div class="form-group">
+              <label for="videoLink">Video / External Link</label>
+              <input type="url" id="videoLink" placeholder="Enter link if needed" />
+            </div>
+
+            <div class="form-group">
+              <label for="publishStatus">Publish Status</label>
+              <select id="publishStatus">
+                <option value="Published">Published</option>
+                <option value="Draft">Draft</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="action-row">
+            <button type="submit" class="save-btn" id="submitBtn">Upload Content</button>
+            <button type="button" class="cancel-btn" onclick="resetFormData()">Reset</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="card syllabus-card">
+        <div class="section-title-row">
+          <h3>Selected Syllabus Topics</h3>
+        </div>
+        <div id="syllabusPreview" class="syllabus-preview">
+          Select standard and subject to see major topics.
+        </div>
+      </section>
+
+      <section class="card filter-card">
+        <div class="section-title-row">
+          <h3>Filter / Search</h3>
+        </div>
+
+        <div class="filter-grid">
+          <div class="form-group">
+            <label for="searchTitle">Search by Title</label>
+            <input type="text" id="searchTitle" placeholder="Search content title..." />
+          </div>
+
+          <div class="form-group">
+            <label for="filterStandard">Filter by Standard</label>
+            <select id="filterStandard">
+              <option value="">All Standards</option>
+              <option value="LKG">4th</option>
+              <option value="UKG">5th</option>
+              <option value="1st">6th Standard</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="filterSubject">Filter by Subject</label>
+            <select id="filterSubject">
+              <option value="">All Subjects</option>
+              <option value="English">English</option>
+              <option value="Maths">Maths</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <section class="card table-card">
+        <div class="section-title-row">
+          <h3>Content List Table</h3>
+        </div>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Standard</th>
+                <th>Subject</th>
+                <th>Topic</th>
+                <th>Type</th>
+                <th>Upload Date</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="contentTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="content.js"></script>
+</body>
+</html>

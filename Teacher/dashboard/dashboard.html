@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Teacher Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="glow glow1"></div>
+  <div class="glow glow2"></div>
+  <div class="glow glow3"></div>
+
+  <div class="dashboard-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo-box">
+        <h1>Nexus Arena</h1>
+        <p>Teacher Panel</p>
+      </div>
+
+      <nav class="sidebar-menu">
+        <a href="#" class="menu-item active">Dashboard</a>
+        <!-- <a href="../profile/profile.html" class="menu-item">Profile</a> -->
+        <!-- <a href="../content/content.html" class="menu-item">Content Upload / Manage</a> -->
+        <a href="../quiz-assignment/quiz.html" class="menu-item">Quiz / Assignment Creation</a>
+        <a href="../ptm/ptm.html" class="menu-item">👥 Parent-Teacher Meetings</a>
+        <a href="../student-analytics/analytics.html" class="menu-item">Student Analytics</a>
+        <a href="../student-report/report.html" class="menu-item">Individual Student Report</a>
+        <a href="../notifications/notifications.html" class="menu-item">Notifications</a>
+        <a href="../settings/settings.html" class="menu-item">Settings</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Top Navbar -->
+      <header class="top-navbar card">
+        <div class="nav-left">
+          <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search activity, class, subject..." />
+          </div>
+        </div>
+
+        <div class="nav-right">
+          <div class="notification-wrapper" onclick="clearNotifications()">
+            <span class="nav-icon">🔔</span>
+            <span class="badge" id="notificationCount">5</span>
+          </div>
+
+          <div class="profile-box" onclick="window.location.href='../profile/profile.html'">
+            <div class="profile-icon">T</div>
+            <div class="profile-info">
+              <h3 id="teacherName">Vedika45</h3>
+              <p>Physics Teacher</p>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Welcome Card -->
+      <section class="welcome-card card">
+        <div>
+          <h2>WELCOME BACK, VEDIKA MAM!</h2>
+          <p>
+            Here is your quick overview for today. Manage students, track performance,
+            review submissions, and access important tools from one place.
+          </p>
+        </div>
+      </section>
+
+      <!-- Stats Cards -->
+      <section class="stats-grid">
+        <div class="stat-card card">
+          <div class="stat-icon">👨‍🎓</div>
+          <h3 id="totalStudents">248</h3>
+          <p>Total Students</p>
+        </div>
+
+        <div class="stat-card card">
+          <div class="stat-icon">📚</div>
+          <h3 id="totalCourses">6</h3>
+          <p>Total Courses</p>
+        </div>
+
+        <div class="stat-card card">
+          <div class="stat-icon">📝</div>
+          <h3 id="pendingAssignments">14</h3>
+          <p>Pending Assignments</p>
+        </div>
+
+        <div class="stat-card card">
+          <div class="stat-icon">✅</div>
+          <h3 id="completedQuizzes">32</h3>
+          <p>Completed Quizzes</p>
+        </div>
+      </section>
+
+      <!-- Middle Section -->
+      <section class="middle-grid">
+        <!-- Recent Activity -->
+        <div class="card section-card">
+          <div class="section-header">
+            <h3>Recent Activity</h3>
+          </div>
+
+          <div class="activity-list" id="activityList">
+            <div class="activity-item">
+              <div>
+                <h4>New assignment submissions received</h4>
+                <p>Science Chapter 3 • Class 9A</p>
+              </div>
+              <span class="status pending">Pending</span>
+            </div>
+
+            <div class="activity-item">
+              <div>
+                <h4>Physics notes uploaded successfully</h4>
+                <p>Motion and Force • Class 10</p>
+              </div>
+              <span class="status published">Published</span>
+            </div>
+
+            <div class="activity-item">
+              <div>
+                <h4>Quiz results generated</h4>
+                <p>Maths Algebra Basics</p>
+              </div>
+              <span class="status done">Done</span>
+            </div>
+
+            <div class="activity-item">
+              <div>
+                <h4>New quiz attempts detected</h4>
+                <p>Chemistry Revision Test</p>
+              </div>
+              <span class="status live">Live</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Upcoming Tasks -->
+        <div class="card section-card">
+          <div class="section-header">
+            <h3>Upcoming Tasks / Calendar</h3>
+          </div>
+
+          <div class="task-list" id="taskList">
+            <div class="task-item">
+              <div>
+                <h4>Review Class 9 assignments</h4>
+                <p>Today • 7:30 PM</p>
+              </div>
+              <button onclick="markTaskDone(this)">Done</button>
+            </div>
+
+            <div class="task-item">
+              <div>
+                <h4>Publish Biology quiz</h4>
+                <p>Tomorrow • 10:00 AM</p>
+              </div>
+              <button onclick="markTaskDone(this)">Done</button>
+            </div>
+
+            <div class="task-item">
+              <div>
+                <h4>Upload revision worksheet</h4>
+                <p>Tomorrow • 2:00 PM</p>
+              </div>
+              <button onclick="markTaskDone(this)">Done</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Bottom Section -->
+      <section class="bottom-grid">
+        <!-- Performance Chart -->
+        <div class="card section-card">
+          <div class="section-header">
+            <h3>Performance Overview</h3>
+            <p>Average scores and student engagement</p>
+          </div>
+
+          <div class="chart-box">
+            <div class="bar-row">
+              <span>Maths</span>
+              <div class="bar"><div class="fill" style="width: 84%"></div></div>
+              <span>84%</span>
+            </div>
+
+            <div class="bar-row">
+              <span>Physics</span>
+              <div class="bar"><div class="fill" style="width: 76%"></div></div>
+              <span>76%</span>
+            </div>
+
+            <div class="bar-row">
+              <span>Chemistry</span>
+              <div class="bar"><div class="fill" style="width: 79%"></div></div>
+              <span>79%</span>
+            </div>
+
+            <div class="bar-row">
+              <span>Biology</span>
+              <div class="bar"><div class="fill" style="width: 88%"></div></div>
+              <span>88%</span>
+            </div>
+
+            <div class="bar-row">
+              <span>Engagement</span>
+              <div class="bar"><div class="fill" style="width: 91%"></div></div>
+              <span>91%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="card section-card">
+          <div class="section-header">
+            <h3>Quick Actions</h3>
+          </div>
+
+          <div class="quick-actions">
+            <button onclick="uploadContent()">Upload Content</button>
+            <button onclick="createQuiz()">Create Quiz</button>
+            <button onclick="viewReports()">View Reports</button>
+            <button onclick="goToAnalytics()">Student Analytics</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>

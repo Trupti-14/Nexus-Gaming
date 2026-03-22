@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Teacher Profile</title>
+  <link rel="stylesheet" href="profile.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="glow glow1"></div>
+  <div class="glow glow2"></div>
+  <div class="glow glow3"></div>
+
+  <div class="profile-page">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo-box">
+        <h1>Nexus Arena</h1>
+        <p>Teacher Panel</p>
+      </div>
+
+      <nav class="sidebar-menu">
+        <a href="../dashboard/dashboard.html" class="menu-item">Dashboard</a>
+        <a href="#" class="menu-item active">Profile</a>
+        <a href="../content/content.html" class="menu-item">Content Upload / Manage</a>
+        <a href="../quiz-assignment/quiz.html" class="menu-item">Quiz / Assignment Creation</a>
+        <a href="../student-analytics/analytics.html" class="menu-item">Student Analytics</a>
+        <a href="../student-report/report.html" class="menu-item">Individual Student Report</a>
+        <a href="../notifications/notifications.html" class="menu-item">Notifications</a>
+        <a href="../settings/settings.html" class="menu-item">Settings</a>
+      </nav>
+    </aside>
+
+    <!-- Main content -->
+    <main class="main-content">
+      <header class="topbar card">
+        <div>
+          <h2>TEACHER PROFILE</h2>
+          <p>View and update your personal and professional details.</p>
+        </div>
+
+        <div class="top-right">
+          <div class="mini-profile">
+            <div class="mini-avatar">T</div>
+            <div>
+              <h3>Vedika45</h3>
+              <p>Physics Teacher</p>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Profile Header -->
+      <section class="profile-header card">
+        <div class="profile-photo-section">
+          <img
+            id="profilePreview"
+            src="https://via.placeholder.com/140x140.png?text=Teacher"
+            alt="Teacher Profile"
+            class="profile-photo"
+          />
+          <input type="file" id="profileImageInput" accept="image/*" hidden />
+          <button class="neon-btn" onclick="changePhoto()">Change Profile Picture</button>
+        </div>
+
+        <div class="profile-main-info">
+          <h1 id="displayName">Vedika Patil</h1>
+          <p id="displayDesignation">Assistant Professor / Physics Teacher</p>
+          <div class="quick-tags">
+            <span>Teacher ID: <strong id="displayTeacherId">TCH-2045</strong></span>
+            <span>Department: <strong id="displayDepartment">Science</strong></span>
+          </div>
+        </div>
+      </section>
+
+      <section class="profile-grid">
+        <!-- Personal Info -->
+        <div class="card info-card">
+          <div class="section-title-row">
+            <h3>Personal Information</h3>
+            <button class="small-btn" id="editProfileBtn">Edit Profile</button>
+          </div>
+
+          <form id="profileForm">
+            <div class="form-group">
+              <label for="fullName">Full Name</label>
+              <input type="text" id="fullName" value="Vedika Patil" disabled />
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" value="vedika45@gmail.com" disabled />
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="text" id="phone" value="+91 9876543210" disabled />
+            </div>
+
+            <div class="form-group">
+              <label for="gender">Gender</label>
+              <select id="gender" disabled>
+                <option value="Female" selected>Female</option>
+                <option value="Male">Male</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </form>
+        </div>
+
+        <!-- Professional Info -->
+        <div class="card info-card">
+          <div class="section-title-row">
+            <h3>Professional Information</h3>
+          </div>
+
+          <div class="form-group">
+            <label for="teacherId">Teacher ID</label>
+            <input type="text" id="teacherId" value="TCH-2045" disabled />
+          </div>
+
+          <div class="form-group">
+            <label for="department">Department</label>
+            <input type="text" id="department" value="Science" disabled />
+          </div>
+
+          <div class="form-group">
+            <label for="subjects">Subjects Assigned</label>
+            <textarea id="subjects" rows="3" disabled>Physics, Mathematics, Basic Electronics</textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="experience">Experience</label>
+            <input type="text" id="experience" value="5 Years" disabled />
+          </div>
+        </div>
+      </section>
+
+      <!-- Change Password -->
+      <section class="card password-card">
+        <div class="section-title-row">
+          <h3>Change Password</h3>
+        </div>
+
+        <form id="passwordForm" class="password-form">
+          <div class="form-group">
+            <label for="currentPassword">Current Password</label>
+            <input type="password" id="currentPassword" placeholder="Enter current password" />
+          </div>
+
+          <div class="form-group">
+            <label for="newPassword">New Password</label>
+            <input type="password" id="newPassword" placeholder="Enter new password" />
+          </div>
+
+          <div class="form-group">
+            <label for="confirmPassword">Confirm New Password</label>
+            <input type="password" id="confirmPassword" placeholder="Confirm new password" />
+          </div>
+        </form>
+      </section>
+
+      <!-- Save / Update -->
+      <section class="action-row">
+        <button class="save-btn" onclick="saveProfile()">Save / Update</button>
+      </section>
+    </main>
+  </div>
+
+  <script src="profile.js"></script>
+</body>
+</html>

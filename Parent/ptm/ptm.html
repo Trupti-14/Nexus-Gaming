@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Parent-Teacher Meeting - Nexus Arena</title>
+  <link rel="stylesheet" href="ptm.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="dashboard-layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <h2>NEXUS <span>ARENA</span></h2>
+      </div>
+
+      <nav class="sidebar-menu">
+        <a href="../dashboard/dashboard.html" class="menu-item">🏠 Dashboard</a>
+        <a href="../progress/progress.html" class="menu-item">📈 Child Progress Detail</a>
+        <a href="../guidance/guidance.html" class="menu-item">📘 Parent Awareness / Guidance</a>
+        <a href="ptm.html" class="menu-item active">👥 Parent-Teacher Meeting</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+      <!-- Top Navbar -->
+      <header class="top-navbar glass-card">
+        <div class="navbar-left">
+          <h1 class="brand-title">PARENT-TEACHER MEETING</h1>
+        </div>
+
+        <div class="navbar-right">
+          <button class="nav-btn" id="notificationBtn">🔔</button>
+          <button class="nav-btn" id="settingsBtn">⚙️</button>
+
+          <div class="parent-profile" onclick="goToProfile()" style="cursor: pointer;">
+            <div class="avatar">P</div>
+            <div>
+              <h3>Parent Name</h3>
+              <p>Monitoring Child Progress</p>
+            </div>
+          </div>
+
+          <button class="logout-btn">Logout</button>
+        </div>
+      </header>
+
+      <!-- Welcome Section -->
+      <section class="welcome-section">
+        <div class="welcome-card glass-card">
+          <h2>CONNECT WITH YOUR CHILD'S TEACHER</h2>
+          <p class="child-info">Child: Aarav Sharma | Class: 1st | Teacher: Mrs. Vedika</p>
+          <p class="motivation-text">Schedule meetings, discuss progress, and stay involved in your child's education.</p>
+        </div>
+      </section>
+
+      <!-- PTM Grid -->
+      <section class="ptm-grid">
+
+        <!-- Request Meeting -->
+        <div class="section-card glass-card">
+          <div class="section-header">
+            <h2>📅 Request a Meeting</h2>
+          </div>
+
+          <form id="meetingRequestForm" class="meeting-form">
+            <div class="form-group">
+              <label for="meetingType">Meeting Type</label>
+              <select id="meetingType" required>
+                <option value="">Select Type</option>
+                <option value="progress">Academic Progress Discussion</option>
+                <option value="behavior">Behavior & Discipline</option>
+                <option value="special">Special Needs Assessment</option>
+                <option value="general">General Discussion</option>
+                <option value="emergency">Urgent Concern</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="preferredDate">Preferred Date</label>
+              <input type="date" id="preferredDate" required>
+            </div>
+
+            <div class="form-group">
+              <label for="preferredTime">Preferred Time</label>
+              <select id="preferredTime" required>
+                <option value="">Select Time</option>
+                <option value="09:00">9:00 AM</option>
+                <option value="10:00">10:00 AM</option>
+                <option value="11:00">11:00 AM</option>
+                <option value="14:00">2:00 PM</option>
+                <option value="15:00">3:00 PM</option>
+                <option value="16:00">4:00 PM</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="meetingTopic">Topic/Concern</label>
+              <textarea id="meetingTopic" placeholder="Describe what you'd like to discuss..." rows="4" required></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="contactMethod">Preferred Contact Method</label>
+              <select id="contactMethod" required>
+                <option value="in-person">In-Person Meeting</option>
+                <option value="virtual">Virtual Meeting (Zoom/Google Meet)</option>
+                <option value="phone">Phone Call</option>
+              </select>
+            </div>
+
+            <button type="submit" class="action-btn primary-btn">Send Meeting Request</button>
+          </form>
+        </div>
+
+        <!-- Upcoming Meetings -->
+        <div class="section-card glass-card">
+          <div class="section-header">
+            <h2>📋 Upcoming Meetings</h2>
+          </div>
+
+          <div class="meetings-list" id="upcomingMeetings">
+            <div class="meeting-item upcoming">
+              <div class="meeting-icon">📅</div>
+              <div class="meeting-details">
+                <h4>Academic Progress Review</h4>
+                <p><strong>Date:</strong> March 20, 2026</p>
+                <p><strong>Time:</strong> 2:00 PM</p>
+                <p><strong>Teacher:</strong> Mrs. Vedika</p>
+                <p><strong>Status:</strong> <span class="status pending">Pending Approval</span></p>
+              </div>
+              <div class="meeting-actions">
+                <button class="action-btn small-btn" onclick="editMeeting('meeting1')">Edit</button>
+                <button class="action-btn small-btn danger" onclick="cancelMeeting('meeting1')">Cancel</button>
+              </div>
+            </div>
+
+            <div class="meeting-item upcoming">
+              <div class="meeting-icon">📅</div>
+              <div class="meeting-details">
+                <h4>Parent-Teacher Conference</h4>
+                <p><strong>Date:</strong> March 25, 2026</p>
+                <p><strong>Time:</strong> 10:00 AM</p>
+                <p><strong>Teacher:</strong> Mrs. Vedika</p>
+                <p><strong>Status:</strong> <span class="status approved">Approved</span></p>
+              </div>
+              <div class="meeting-actions">
+                <button class="action-btn small-btn" onclick="joinMeeting('meeting2')">Join Meeting</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Meeting History -->
+        <div class="section-card glass-card">
+          <div class="section-header">
+            <h2>📚 Meeting History</h2>
+          </div>
+
+          <div class="meetings-list" id="meetingHistory">
+            <div class="meeting-item completed">
+              <div class="meeting-icon">✅</div>
+              <div class="meeting-details">
+                <h4>Monthly Progress Review</h4>
+                <p><strong>Date:</strong> February 15, 2026</p>
+                <p><strong>Duration:</strong> 30 minutes</p>
+                <p><strong>Teacher:</strong> Mrs. Vedika</p>
+                <p><strong>Outcome:</strong> Discussed reading improvement strategies</p>
+              </div>
+              <div class="meeting-actions">
+                <button class="action-btn small-btn" onclick="viewNotes('meeting3')">View Notes</button>
+              </div>
+            </div>
+
+            <div class="meeting-item completed">
+              <div class="meeting-icon">✅</div>
+              <div class="meeting-details">
+                <h4>Behavior Discussion</h4>
+                <p><strong>Date:</strong> January 28, 2026</p>
+                <p><strong>Duration:</strong> 25 minutes</p>
+                <p><strong>Teacher:</strong> Mrs. Vedika</p>
+                <p><strong>Outcome:</strong> Positive behavior reinforcement plan</p>
+              </div>
+              <div class="meeting-actions">
+                <button class="action-btn small-btn" onclick="viewNotes('meeting4')">View Notes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Teacher Availability -->
+        <div class="section-card glass-card">
+          <div class="section-header">
+            <h2>🕒 Teacher Availability</h2>
+          </div>
+
+          <div class="availability-calendar">
+            <div class="calendar-header">
+              <button class="nav-btn" onclick="previousWeek()">←</button>
+              <h3 id="currentWeek">March 17-23, 2026</h3>
+              <button class="nav-btn" onclick="nextWeek()">→</button>
+            </div>
+
+            <div class="calendar-grid">
+              <div class="day-column">
+                <div class="day-header">Mon 17</div>
+                <div class="time-slot available" onclick="selectTimeSlot('2026-03-17', '09:00')">9:00 AM</div>
+                <div class="time-slot available" onclick="selectTimeSlot('2026-03-17', '10:00')">10:00 AM</div>
+                <div class="time-slot booked">11:00 AM</div>
+                <div class="time-slot available" onclick="selectTimeSlot('2026-03-17', '14:00')">2:00 PM</div>
+                <div class="time-slot available" onclick="selectTimeSlot('2026-03-17', '15:00')">3:00 PM</div>
+              </div>
+
+              <div class="day-column">
+                <div class="day-header">Tue 18</div>
+                <div class="time-slot available" onclick="selectTimeSlot('2026-03-18', '09:00')">9:00 AM</div>
+                <div class="time-slot booked">10:00 AM</div>
+                <div class="time-slot available" onclick="selectTimeSlot('2026-03-18', '11:00')">11:00 AM</div>
+                <div class="time-slot available" onclick="selectTimeSlot('2026-03-18', '14:00')">2:00 PM</div>
+                <div class="time-slot booked">3:00 PM</div>
+              </div>
+
+              <div class="day-column">
+                <div class="day-header">Wed 19</div>
+                <div class="time-slot available" onclick="selectTimeSlot('2026-03-19', '09:00')">9:00 AM</div>
+                <div class="time-slot available" onclick="selectTimeSlot('2026-03-19', '10:00')">10:00 AM</div>
+                <div class="time-slot available" onclick="selectTimeSlot('2026-03-19', '11:00')">11:00 AM</div>
+                <div class="time-slot booked">2:00 PM</div>
+                <div class="time-slot available" onclick="selectTimeSlot('2026-03-19', '15:00')">3:00 PM</div>
+              </div>
+
+              <div class="day-column">
+                <div class="day-header">Thu 20</div>
+                <div class="time-slot booked">9:00 AM</div>
+                <div class="time-slot available" onclick="selectTimeSlot('2026-03-20', '10:00')">10:00 AM</div>
+                <div class="time-slot available" onclick="selectTimeSlot('2026-03-20', '11:00')">11:00 AM</div>
+                <div class="time-slot available" onclick="selectTimeSlot('2026-03-20', '14:00')">2:00 PM</div>
+                <div class="time-slot booked">3:00 PM</div>
+              </div>
+
+              <div class="day-column">
+                <div class="day-header">Fri 21</div>
+                <div class="time-slot available" onclick="selectTimeSlot('2026-03-21', '09:00')">9:00 AM</div>
+                <div class="time-slot booked">10:00 AM</div>
+                <div class="time-slot available" onclick="selectTimeSlot('2026-03-21', '11:00')">11:00 AM</div>
+                <div class="time-slot available" onclick="selectTimeSlot('2026-03-21', '14:00')">2:00 PM</div>
+                <div class="time-slot available" onclick="selectTimeSlot('2026-03-21', '15:00')">3:00 PM</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Quick Actions -->
+      <section class="quick-actions-section">
+        <div class="section-card glass-card">
+          <div class="section-header">
+            <h2>⚡ Quick Actions</h2>
+          </div>
+
+          <div class="quick-actions-grid">
+            <button class="quick-action-btn" onclick="scheduleUrgentMeeting()">
+              🚨 Schedule Urgent Meeting
+            </button>
+            <button class="quick-action-btn" onclick="viewTeacherContact()">
+              📞 Contact Teacher
+            </button>
+            <button class="quick-action-btn" onclick="downloadMeetingReport()">
+              📄 Download Meeting Report
+            </button>
+            <button class="quick-action-btn" onclick="viewMeetingGuidelines()">
+              📋 Meeting Guidelines
+            </button>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Meeting Notes Modal -->
+  <div id="meetingNotesModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Meeting Notes</h3>
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+      </div>
+      <div class="modal-body" id="meetingNotesContent">
+        <!-- Meeting notes will be loaded here -->
+      </div>
+    </div>
+  </div>
+
+  <script src="ptm.js"></script>
+</body>
+</html>

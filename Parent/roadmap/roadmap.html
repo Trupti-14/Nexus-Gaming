@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learning Roadmap - Parent Dashboard</title>
+  <link rel="stylesheet" href="roadmap.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="glow glow1"></div>
+  <div class="glow glow2"></div>
+  <div class="glow glow3"></div>
+
+  <div class="roadmap-page">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <h2>NEXUS <span>GAMING</span></h2>
+      </div>
+
+      <nav class="sidebar-menu">
+        <a href="../dashboard/dashboard.html" class="menu-item">🏠 Dashboard</a>
+        <a href="../progress/progress.html" class="menu-item">📈 Child Progress Detail</a>
+        <a href="../guidance/guidance.html" class="menu-item">📘 Parent Awareness / Guidance</a>
+        <a href="../ptm/ptm.html" class="menu-item">👥 Parent-Teacher Meeting</a>
+        <a href="roadmap.html" class="menu-item active">🗺️ Learning Roadmap</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="topbar card">
+        <div>
+          <h2>LEARNING ROADMAP</h2>
+          <p>Track your child's learning journey, milestones, and upcoming goals.</p>
+        </div>
+
+        <div class="topbar-right">
+          <div class="mini-profile">
+            <div class="mini-avatar">P</div>
+            <div>
+              <h3>Parent Name</h3>
+              <p>Monitoring Progress</p>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Child Selector -->
+      <section class="card child-selector">
+        <div class="section-title">
+          <h3>Select Child</h3>
+        </div>
+        <div class="child-tabs" id="childTabs">
+          <!-- Dynamically populated -->
+        </div>
+      </section>
+
+      <!-- Roadmap Overview -->
+      <section class="card roadmap-overview">
+        <div class="section-title">
+          <h3>Roadmap Overview</h3>
+        </div>
+        <div class="overview-stats">
+          <div class="stat-item">
+            <h4 id="completedMilestones">0</h4>
+            <p>Completed Milestones</p>
+          </div>
+          <div class="stat-item">
+            <h4 id="currentLevel">0</h4>
+            <p>Current Level</p>
+          </div>
+          <div class="stat-item">
+            <h4 id="nextMilestone">0</h4>
+            <p>Days to Next Milestone</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Interactive Roadmap -->
+      <section class="card roadmap-container">
+        <div class="section-title">
+          <h3>Learning Path</h3>
+        </div>
+        <div class="roadmap-timeline" id="roadmapTimeline">
+          <!-- Dynamically populated -->
+        </div>
+      </section>
+
+      <!-- Upcoming Goals -->
+      <section class="card upcoming-goals">
+        <div class="section-title">
+          <h3>Upcoming Goals</h3>
+        </div>
+        <div class="goals-list" id="goalsList">
+          <!-- Dynamically populated -->
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="roadmap.js"></script>
+</body>
+</html>

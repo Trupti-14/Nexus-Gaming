@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Parent Settings - Nexus Arena</title>
+  <link rel="stylesheet" href="settings.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="settings-layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <h2>Nexus <span>Arena</span></h2>
+      </div>
+
+      <nav class="sidebar-menu">
+  <a href="../dashboard/dashboard.html" class="menu-item">🏠 Dashboard</a>
+  <a href="../progress/progress.html" class="menu-item">📈 Child Progress Detail</a>
+  <a href="../guidance/guidance.html" class="menu-item">📘 Parent Awareness / Guidance</a>
+  </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+      <!-- Top Navbar -->
+      <header class="top-navbar glass-card">
+        <div class="navbar-left">
+          <h1 class="brand-title">SETTINGS</h1>
+        </div>
+
+        <div class="navbar-right">
+          <button class="nav-btn" id="notificationBtn">🔔</button>
+          <button class="nav-btn active-btn" id="settingsBtn">⚙️</button>
+
+          <div class="parent-profile-mini" onclick="goToProfile()" style="cursor: pointer;">
+  <div class="avatar-mini" id="avatarLetter">P</div>
+  <div>
+    <h3 id="topParentName">Parent Name</h3>
+    <p>Support Child Learning</p>
+  </div>
+</div>
+
+          <button class="logout-btn" id="logoutBtn">Logout</button>
+        </div>
+      </header>
+
+      <!-- Hero -->
+      <section class="hero-card glass-card">
+        <div class="hero-left">
+          <h2>CUSTOMIZE YOUR PARENT EXPERIENCE</h2>
+          <p>
+            Update your account, control notifications, set learning reminders,
+            and manage privacy settings for your child’s learning journey.
+          </p>
+          <div class="hero-tags">
+            <span>Account</span>
+            <span>Notifications</span>
+            <span>Reminders</span>
+            <span>Privacy</span>
+          </div>
+        </div>
+        <div class="hero-right">
+          <div class="hero-icon">⚙️</div>
+        </div>
+      </section>
+
+      <!-- Account Settings -->
+      <section class="section-card glass-card">
+        <div class="section-header">
+          <h2>Account Settings</h2>
+        </div>
+
+        <form id="accountForm" class="form-grid">
+          <div class="input-group">
+            <label for="parentEmail">Update Email</label>
+            <input type="email" id="parentEmail" value="mrs.sharma@gmail.com" placeholder="Enter updated email" />
+          </div>
+
+          <div class="input-group">
+            <label for="currentPassword">Current Password</label>
+            <input type="password" id="currentPassword" placeholder="Enter current password" />
+          </div>
+
+          <div class="input-group">
+            <label for="newPassword">New Password</label>
+            <input type="password" id="newPassword" placeholder="Enter new password" />
+          </div>
+
+          <div class="input-group">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" placeholder="Confirm new password" />
+          </div>
+        </form>
+      </section>
+
+      <!-- Notification Settings -->
+      <section class="section-card glass-card">
+        <div class="section-header">
+          <h2>Notification Settings</h2>
+        </div>
+
+        <div class="toggle-list">
+          <div class="toggle-item">
+            <div>
+              <h3>Progress Alerts</h3>
+              <p>Get notified whenever your child’s progress changes.</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="progressAlerts" checked />
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="toggle-item">
+            <div>
+              <h3>Daily Summary</h3>
+              <p>Receive a daily learning summary of your child’s activities.</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="dailySummary" checked />
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="toggle-item">
+            <div>
+              <h3>Achievement Notifications</h3>
+              <p>Get updates about badges, levels, and milestones unlocked.</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="achievementNotifications" checked />
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <!-- Learning Reminder Settings -->
+      <section class="settings-grid">
+        <div class="section-card glass-card">
+          <div class="section-header">
+            <h2>Learning Reminder Settings</h2>
+          </div>
+
+          <div class="toggle-item reminder-block">
+            <div>
+              <h3>Daily Reminder</h3>
+              <p>Enable a daily reminder for your child’s learning routine.</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="dailyReminderToggle" checked />
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="input-group reminder-time-group">
+            <label for="reminderTime">Reminder Time</label>
+            <input type="time" id="reminderTime" value="18:00" />
+          </div>
+        </div>
+
+        <!-- Child Access Settings -->
+        <div class="section-card glass-card">
+          <div class="section-header">
+            <h2>Child Access Settings</h2>
+          </div>
+
+          <div class="toggle-list compact-list">
+            <div class="toggle-item">
+              <div>
+                <h3>Allow Game Access</h3>
+                <p>Let child access learning games on the platform.</p>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="gameAccess" checked />
+                <span class="slider"></span>
+              </label>
+            </div>
+
+            <div class="toggle-item">
+              <div>
+                <h3>Allow Practice Activities</h3>
+                <p>Enable extra subject practice for home learning.</p>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="practiceAccess" checked />
+                <span class="slider"></span>
+              </label>
+            </div>
+
+            <div class="toggle-item">
+              <div>
+                <h3>Restrict Late Night Access</h3>
+                <p>Block access after a selected time for a healthy routine.</p>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="lateNightRestriction" />
+                <span class="slider"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Privacy Settings -->
+      <section class="section-card glass-card">
+        <div class="section-header">
+          <h2>Privacy Settings</h2>
+        </div>
+
+        <div class="privacy-list">
+          <div class="privacy-item">
+            <div>
+              <h3>Data Sharing Options</h3>
+              <p>Allow anonymous learning data to improve platform experience.</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="dataSharingToggle" />
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="privacy-item">
+            <div>
+              <h3>Account Security</h3>
+              <p>Enable added protection for sensitive account changes.</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="accountSecurityToggle" checked />
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <!-- Save Section -->
+      <section class="save-section">
+        <button class="action-btn" id="saveSettingsBtn">Save Settings</button>
+        <button class="secondary-btn" id="resetSettingsBtn">Reset</button>
+      </section>
+
+      <div id="messageBox" class="message-box"></div>
+    </main>
+  </div>
+
+  <script src="settings.js"></script>
+</body>
+</html>

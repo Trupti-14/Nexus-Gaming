@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Individual Student Report</title>
+  <link rel="stylesheet" href="report.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="glow glow1"></div>
+  <div class="glow glow2"></div>
+  <div class="glow glow3"></div>
+
+  <div class="report-page">
+    <aside class="sidebar">
+      <div class="logo-box">
+        <h1>Nexus Arena</h1>
+        <p>Teacher Panel</p>
+      </div>
+
+      <nav class="sidebar-menu">
+        <a href="../dashboard/dashboard.html" class="menu-item">Dashboard</a>
+        <a href="../profile/profile.html" class="menu-item">Profile</a>
+        <a href="../content/content.html" class="menu-item">Content Upload / Manage</a>
+        <a href="../quiz-assignment/quiz.html" class="menu-item">Quiz / Assignment Creation</a>
+        <a href="../student-analytics/analytics.html" class="menu-item">Student Analytics</a>
+        <a href="#" class="menu-item active">Individual Student Report</a>
+        <a href="../notifications/notifications.html" class="menu-item">Notifications</a>
+        <a href="../settings/settings.html" class="menu-item">Settings</a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar card">
+        <div>
+          <h2>INDIVIDUAL STUDENT REPORT</h2>
+          <p>View full academic progress, submissions, strengths, weak areas, and remarks.</p>
+        </div>
+
+        <div class="topbar-right">
+          <div class="mini-profile">
+            <div class="mini-avatar">T</div>
+            <div>
+              <h3>Vedika45</h3>
+              <p>English / Maths Teacher</p>
+            </div>
+          </div>
+
+          <button class="download-btn" onclick="downloadStudentReport()">Download Report</button>
+        </div>
+      </header>
+
+      <!-- Search Student -->
+      <section class="card search-card">
+        <div class="section-title-row">
+          <h3>Search Student Bar</h3>
+        </div>
+
+        <div class="search-row">
+          <input type="text" id="studentSearch" placeholder="Search student by name..." />
+          <button class="search-btn" onclick="searchStudent()">Search</button>
+        </div>
+      </section>
+
+      <!-- Student Profile -->
+      <section class="card student-profile-card">
+        <div class="profile-left">
+          <img
+            id="studentImage"
+            class="student-image"
+            src="https://via.placeholder.com/140x140.png?text=Student"
+            alt="Student Profile"
+          />
+          <div class="student-basic">
+            <h3 id="studentName">Aarav Sharma</h3>
+            <p>Roll No: <span id="studentRoll">LKG-12</span></p>
+            <p>Class: <span id="studentClass">LKG-A</span></p>
+          </div>
+        </div>
+
+        <div class="guardian-box">
+          <h4>Parent / Guardian Contact Info</h4>
+          <p><strong>Name:</strong> <span id="guardianName">Rajesh Sharma</span></p>
+          <p><strong>Phone:</strong> <span id="guardianPhone">+91 9876543210</span></p>
+          <p><strong>Email:</strong> <span id="guardianEmail">rajesh.sharma@gmail.com</span></p>
+        </div>
+      </section>
+
+      <!-- Performance Summary -->
+      <section class="stats-grid">
+        <div class="stat-card card">
+          <p>Average Marks</p>
+          <h3 id="avgMarks">0%</h3>
+        </div>
+
+        <div class="stat-card card">
+          <p>Quiz Completion</p>
+          <h3 id="quizCompletion">0%</h3>
+        </div>
+
+        <div class="stat-card card">
+          <p>Assignment Completion</p>
+          <h3 id="assignmentCompletion">0%</h3>
+        </div>
+
+        <div class="stat-card card">
+          <p>Attendance / Activity</p>
+          <h3 id="attendanceValue">0%</h3>
+        </div>
+      </section>
+
+      <!-- Strength + Weak areas -->
+      <section class="middle-grid">
+        <div class="card list-card">
+          <div class="section-title-row">
+            <h3>Strengths</h3>
+          </div>
+          <div id="strengthsList" class="list-box"></div>
+        </div>
+
+        <div class="card list-card">
+          <div class="section-title-row">
+            <h3>Weak Areas</h3>
+          </div>
+          <div id="weakAreasList" class="list-box"></div>
+        </div>
+      </section>
+
+      <!-- Detailed Report Table -->
+      <section class="card table-card">
+        <div class="section-title-row">
+          <h3>Detailed Report Table</h3>
+        </div>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Quiz / Assignment Name</th>
+                <th>Type</th>
+                <th>Marks</th>
+                <th>Submission Date</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="reportTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Progress Graph -->
+      <section class="card graph-card">
+        <div class="section-title-row">
+          <h3>Progress Graph</h3>
+        </div>
+        <div class="line-chart-box">
+          <svg id="progressChart" viewBox="0 0 700 240" preserveAspectRatio="none"></svg>
+        </div>
+      </section>
+
+      <!-- Teacher Remarks -->
+      <section class="card remarks-card">
+        <div class="section-title-row">
+          <h3>Teacher Remarks Box</h3>
+        </div>
+
+        <textarea id="teacherRemarks" rows="5" placeholder="Write teacher remarks here..."></textarea>
+
+        <div class="action-row">
+          <button class="save-btn" onclick="saveRemarks()">Save Remarks</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="report.js"></script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nexus Arena - Notifications</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="notifications.css" />
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="glow glow1"></div>
+  <div class="glow glow2"></div>
+
+  <div class="content-page">
+    <aside class="sidebar">
+      <div class="logo-box">
+        <h1>Nexus Arena</h1>
+        <p>Student Panel</p>
+      </div>
+
+      <nav class="sidebar-menu">
+        <a href="../dashboard/dashboard.html" class="menu-item">🏠 Dashboard</a>
+        <a href="../profile/profile.html" class="menu-item">👤 Profile</a>
+        <a href="../awareness/awareness.html" class="menu-item">🛡️ Awareness Module</a>
+        <a href="../education/subjects.html" class="menu-item">📘 Education Module</a>
+        <a href="/adaptive-test/" class="menu-item">🧮 Adaptive Math Test</a>
+        <a href="../achievements/achievements.html" class="menu-item">🏆 Achievements</a>
+        <a href="../leaderboard/leaderboard.html" class="menu-item">📊 Leaderboard</a>
+        <a href="./notifications.html" class="menu-item active">🔔 Notifications</a>
+        <a href="../settings/settings.html" class="menu-item">⚙️ Settings</a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <section class="card topbar">
+        <div>
+          <h2>NOTIFICATIONS</h2>
+          <p>See recent updates, rewards, reminders, and learning activity alerts.</p>
+        </div>
+
+        <div class="topbar-right">
+          <a href="./notifications.html" class="top-icon-btn" title="Notifications">🔔</a>
+          <a href="../settings/settings.html" class="top-icon-btn" title="Settings">⚙️</a>
+          <button class="action-btn primary-btn" id="markAllReadBtn">Mark All as Read</button>
+        </div>
+      </section>
+
+      <section class="card tab-card">
+        <div class="tab-buttons">
+          <button class="tab-btn active" data-filter="all">All</button>
+          <button class="tab-btn" data-filter="unread">Unread</button>
+          <button class="tab-btn" data-filter="awareness">Awareness</button>
+          <button class="tab-btn" data-filter="education">Education</button>
+          <button class="tab-btn" data-filter="achievement">Achievement</button>
+        </div>
+      </section>
+
+      <section class="notification-list" id="notificationList"></section>
+    </main>
+  </div>
+
+  <script src="notifications.js"></script>
+</body>
+</html>

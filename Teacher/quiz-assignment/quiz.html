@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz / Assignment Creation</title>
+  <link rel="stylesheet" href="quiz.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="glow glow1"></div>
+  <div class="glow glow2"></div>
+  <div class="glow glow3"></div>
+
+  <div class="quiz-page">
+    <aside class="sidebar">
+      <div class="logo-box">
+        <h1>Nexus Arena</h1>
+        <p>Teacher Panel</p>
+      </div>
+
+      <nav class="sidebar-menu">
+        <a href="../dashboard/dashboard.html" class="menu-item">Dashboard</a>
+        <a href="../profile/profile.html" class="menu-item">Profile</a>
+        <a href="../content/content.html" class="menu-item">Content Upload / Manage</a>
+        <a href="#" class="menu-item active">Quiz / Assignment Creation</a>
+        <a href="../student-analytics/analytics.html" class="menu-item">Student Analytics</a>
+        <a href="../student-report/report.html" class="menu-item">Individual Student Report</a>
+        <a href="../notifications/notifications.html" class="menu-item">Notifications</a>
+        <a href="../settings/settings.html" class="menu-item">Settings</a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar card">
+        <div>
+          <h2>QUIZ / ASSIGNMENT CREATION</h2>
+          <p>Create quizzes, assignments, tests, and manage student tasks from one place.</p>
+        </div>
+
+        <div class="mini-profile">
+          <div class="mini-avatar">T</div>
+          <div>
+            <h3>Vedika45</h3>
+            <p>Teacher Account</p>
+          </div>
+        </div>
+      </header>
+
+      <section class="card mode-card">
+        <div class="section-title-row">
+          <h3>Create New</h3>
+        </div>
+
+        <div class="mode-buttons">
+          <button class="mode-btn active" id="quizModeBtn" onclick="switchMode('quiz')">New Quiz</button>
+          <button class="mode-btn" id="assignmentModeBtn" onclick="switchMode('assignment')">New Assignment</button>
+        </div>
+      </section>
+
+      <!-- QUIZ FORM -->
+      <section class="card form-card" id="quizSection">
+        <div class="section-title-row">
+          <h3>Quiz Creation Form</h3>
+        </div>
+
+        <form id="quizForm">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="quizTitle">Quiz Title</label>
+              <input type="text" id="quizTitle" placeholder="Enter quiz title" />
+            </div>
+
+            <div class="form-group">
+              <label for="quizSubject">Subject</label>
+              <select id="quizSubject">
+                <option value="">Select Subject</option>
+                <option value="English">English</option>
+                <option value="Maths">Maths</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="quizChapter">Chapter</label>
+              <select id="quizChapter">
+                <option value="">Select Chapter</option>
+                <option value="Alphabet Learning">Alphabet Learning</option>
+                <option value="Vocabulary Development">Vocabulary Development</option>
+                <option value="Rhymes and Speaking Skills">Rhymes and Speaking Skills</option>
+                <option value="Numbers and Counting">Numbers and Counting</option>
+                <option value="Basic Operations">Basic Operations</option>
+                <option value="Shapes and Measurement">Shapes and Measurement</option>
+              </select>
+            </div>
+
+            <div class="form-group full-width">
+              <label for="quizInstructions">Instructions</label>
+              <textarea id="quizInstructions" rows="3" placeholder="Enter quiz instructions"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="quizTimeLimit">Time Limit (minutes)</label>
+              <input type="number" id="quizTimeLimit" placeholder="Enter time limit" />
+            </div>
+
+            <div class="form-group">
+              <label for="quizMarks">Total Marks</label>
+              <input type="number" id="quizMarks" placeholder="Enter total marks" />
+            </div>
+
+            <div class="form-group">
+              <label for="quizDeadline">Deadline</label>
+              <input type="date" id="quizDeadline" />
+            </div>
+
+            <div class="form-group">
+              <label for="quizClass">Assign to Class / Section</label>
+              <select id="quizClass">
+                <option value="">Select Class</option>
+                <option value="LKG-A">1st</option>
+                <option value="UKG-A">2nd</option>
+                <option value="1st-A">3rd</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="question-builder">
+            <div class="section-title-row">
+              <h3>Question Builder</h3>
+              <button type="button" class="small-btn" onclick="addQuestionBlock()">Add Question</button>
+            </div>
+
+            <div id="questionsContainer"></div>
+          </div>
+
+          <div class="action-row">
+            <button type="submit" class="save-btn" id="quizSubmitBtn">Save Quiz</button>
+            <button type="button" class="cancel-btn" onclick="resetQuizForm()">Reset</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- ASSIGNMENT FORM -->
+      <section class="card form-card hidden" id="assignmentSection">
+        <div class="section-title-row">
+          <h3>Assignment Form</h3>
+        </div>
+
+        <form id="assignmentForm">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="assignmentTitle">Title</label>
+              <input type="text" id="assignmentTitle" placeholder="Enter assignment title" />
+            </div>
+
+            <div class="form-group">
+              <label for="assignmentSubject">Subject</label>
+              <select id="assignmentSubject">
+                <option value="">Select Subject</option>
+                <option value="English">English</option>
+                <option value="Maths">Maths</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="assignmentChapter">Chapter</label>
+              <select id="assignmentChapter">
+                <option value="">Select Chapter</option>
+                <option value="Alphabet Learning">Alphabet Learning</option>
+                <option value="Vocabulary Development">Vocabulary Development</option>
+                <option value="Rhymes and Speaking Skills">Rhymes and Speaking Skills</option>
+                <option value="Numbers and Counting">Numbers and Counting</option>
+                <option value="Basic Operations">Basic Operations</option>
+                <option value="Shapes and Measurement">Shapes and Measurement</option>
+              </select>
+            </div>
+
+            <div class="form-group full-width">
+              <label for="assignmentDescription">Description</label>
+              <textarea id="assignmentDescription" rows="4" placeholder="Enter assignment description"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="assignmentAttachment">Attachment Upload</label>
+              <input type="file" id="assignmentAttachment" />
+            </div>
+
+            <div class="form-group">
+              <label for="assignmentDueDate">Due Date</label>
+              <input type="date" id="assignmentDueDate" />
+            </div>
+
+            <div class="form-group">
+              <label for="assignmentClass">Assign to Class / Section</label>
+              <select id="assignmentClass">
+                <option value="">Select Class</option>
+                <option value="LKG-A">1st</option>
+                <option value="UKG-A">2nd</option>
+                <option value="1st-A">3rd</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="action-row">
+            <button type="submit" class="save-btn" id="assignmentSubmitBtn">Save Assignment</button>
+            <button type="button" class="cancel-btn" onclick="resetAssignmentForm()">Reset</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- EXISTING LIST -->
+      <section class="card table-card">
+        <div class="section-title-row">
+          <h3>Existing Quiz / Assignment List</h3>
+        </div>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Subject</th>
+                <th>Chapter</th>
+                <th>Due Date</th>
+                <th>Status</th>
+                <th>Class</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="savedItemsTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="quiz.js"></script>
+</body>
+</html>

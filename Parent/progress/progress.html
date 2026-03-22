@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Child Progress Detail - Nexus Arena</title>
+  <link rel="stylesheet" href="progress.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="progress-layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <h2>Nexus <span>Arena</span></h2>
+      </div>
+
+      <nav class="sidebar-menu">
+  <a href="../dashboard/dashboard.html" class="menu-item">🏠 Dashboard</a>
+  <a href="../progress/progress.html" class="menu-item">📈 Child Progress Detail</a>
+  <a href="../guidance/guidance.html" class="menu-item">📘 Parent Awareness / Guidance</a>
+</nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+      <!-- Top Navbar -->
+      <header class="top-navbar glass-card">
+        <div class="navbar-left">
+          <h1 class="brand-title">CHILD PROGRESS DETAIL</h1>
+        </div>
+
+        <div class="navbar-right">
+          <button class="nav-btn" id="notificationBtn">🔔</button>
+          <button class="nav-btn" id="settingsBtn">⚙️</button>
+
+          <div class="parent-profile-mini" onclick="goToProfile()" style="cursor: pointer;">
+  <div class="avatar-mini" id="avatarLetter">P</div>
+  <div>
+    <h3 id="topParentName">Parent Name</h3>
+    <p>Support Child Learning</p>
+  </div>
+</div>
+
+          <button class="logout-btn" id="logoutBtn">Logout</button>
+        </div>
+      </header>
+
+      <!-- Child Overview -->
+      <section class="child-overview glass-card">
+        <div class="overview-left">
+          <div class="child-avatar" id="childAvatar">A</div>
+          <div class="child-main-info">
+            <h2 id="childName">Aarav Sharma</h2>
+            <p id="childClass">Class: 1st</p>
+            <span class="profile-badge">Detailed Performance Report</span>
+          </div>
+        </div>
+
+        <div class="overview-right">
+          <button class="action-btn" id="refreshBtn">Refresh Data</button>
+        </div>
+      </section>
+
+      <!-- Overview Cards -->
+      <section class="stats-section">
+        <div class="stat-card glass-card">
+          <div class="stat-icon">⭐</div>
+          <div>
+            <h3 id="childLevel">3</h3>
+            <p>Current Level</p>
+          </div>
+        </div>
+
+        <div class="stat-card glass-card">
+          <div class="stat-icon">✨</div>
+          <div>
+            <h3 id="totalXP">120</h3>
+            <p>Total XP</p>
+          </div>
+        </div>
+
+        <div class="stat-card glass-card">
+          <div class="stat-icon">🔥</div>
+          <div>
+            <h3 id="learningStreak">5 Days</h3>
+            <p>Learning Streak</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Subject Progress + Feedback -->
+      <section class="progress-grid">
+        <div class="section-card glass-card">
+          <div class="section-header">
+            <h2>Subject Progress</h2>
+          </div>
+
+          <div class="subjects-container">
+            <div class="subject-card">
+              <div class="subject-top">
+                <span class="subject-icon">📘</span>
+                <div>
+                  <h3>English</h3>
+                  <p>Reading, alphabet and word learning</p>
+                </div>
+              </div>
+
+              <div class="progress-row">
+                <div class="progress-label">
+                  <span>Completion</span>
+                  <span id="englishCompletionText">72%</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill english-progress" id="englishCompletionBar"></div>
+                </div>
+              </div>
+
+              <div class="progress-row">
+                <div class="progress-label">
+                  <span>Accuracy</span>
+                  <span id="englishAccuracyText">84%</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill accuracy-progress" id="englishAccuracyBar"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="subject-card">
+              <div class="subject-top">
+                <span class="subject-icon">🔢</span>
+                <div>
+                  <h3>Maths</h3>
+                  <p>Counting, numbers and basic practice</p>
+                </div>
+              </div>
+
+              <div class="progress-row">
+                <div class="progress-label">
+                  <span>Completion</span>
+                  <span id="mathsCompletionText">58%</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill maths-progress" id="mathsCompletionBar"></div>
+                </div>
+              </div>
+
+              <div class="progress-row">
+                <div class="progress-label">
+                  <span>Accuracy</span>
+                  <span id="mathsAccuracyText">76%</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill accuracy-progress" id="mathsAccuracyBar"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-card glass-card">
+          <div class="section-header">
+            <h2>Teacher Feedback</h2>
+          </div>
+
+          <div class="feedback-box">
+            <p id="teacherFeedback">
+              "The child is improving in number recognition and is showing good interest in alphabet activities."
+            </p>
+          </div>
+
+          <div class="feedback-box secondary-feedback">
+            <h4>Teacher Suggestion</h4>
+            <p id="teacherSuggestion">
+              Practice counting at home for 10 minutes daily and revise letter matching games.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Game Activity Table -->
+      <section class="section-card glass-card">
+        <div class="section-header table-header">
+          <h2>Game Activity</h2>
+          <div class="table-actions">
+            <button class="secondary-btn" id="sortScoreBtn">Sort by Score</button>
+            <button class="secondary-btn" id="sortDateBtn">Sort by Date</button>
+          </div>
+        </div>
+
+        <div class="table-wrapper">
+          <table class="activity-table">
+            <thead>
+              <tr>
+                <th>Game Name</th>
+                <th>Subject</th>
+                <th>Score</th>
+                <th>XP Earned</th>
+                <th>Date Played</th>
+              </tr>
+            </thead>
+            <tbody id="activityTableBody">
+              <!-- JS will load rows here -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <div id="messageBox" class="message-box"></div>
+    </main>
+  </div>
+
+  <script src="progress.js"></script>
+</body>
+</html>

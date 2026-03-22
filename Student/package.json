@@ -1,0 +1,22 @@
+{
+  "name": "student-dashboard",
+  "version": "1.0.0",
+  "description": "Student Dashboard Web Application",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "student",
+    "dashboard",
+    "education"
+  ],
+  "author": "Nexus Arena",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.0",
+    "mongoose": "^9.3.0"
+  }
+}

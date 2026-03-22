@@ -1,0 +1,242 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-card: rgba(12, 18, 45, 0.82);
+  --cyan: #19e3ff;
+  --pink: #ff2ea6;
+  --purple: #9d4dff;
+  --text: #f5f7ff;
+  --muted: #aeb7d9;
+  --border: rgba(25, 227, 255, 0.35);
+  --shadow: 0 0 20px rgba(25, 227, 255, 0.18);
+  --yellow: #ffd34d;
+  --green: #49f5a6;
+  --deep-bg: rgba(7, 12, 30, 0.92);
+}
+
+body {
+  font-family: "Rajdhani", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 46, 166, 0.12), transparent 25%),
+    radial-gradient(circle at 80% 10%, rgba(25, 227, 255, 0.14), transparent 25%),
+    #050816;
+  min-height: 100vh;
+}
+
+.bg-grid {
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(25, 227, 255, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(25, 227, 255, 0.12) 1px, transparent 1px);
+  background-size: 56px 56px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.layout {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 330px;
+  background: rgba(3, 8, 30, 0.94);
+  border-right: 1px solid rgba(25, 227, 255, 0.14);
+  padding: 28px 18px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.logo-box {
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  padding: 28px 22px;
+  background: rgba(10, 16, 45, 0.9);
+  box-shadow: var(--shadow);
+  margin-bottom: 28px;
+}
+
+.logo-box h1 {
+  font-family: "Orbitron", sans-serif;
+  font-size: 24px;
+  background: linear-gradient(90deg, var(--cyan), #a78bfa, var(--pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.logo-box p {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 18px;
+}
+
+.sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.menu-item {
+  text-decoration: none;
+  color: var(--text);
+  padding: 20px 18px;
+  border-radius: 22px;
+  background: rgba(10, 15, 45, 0.82);
+  border: 1px solid rgba(255,255,255,0.06);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.menu-item.active,
+.menu-item:hover {
+  border-color: var(--cyan);
+  color: var(--cyan);
+  box-shadow: 0 0 18px rgba(25, 227, 255, 0.18);
+}
+
+.main-content {
+  flex: 1;
+  padding: 34px 28px;
+}
+
+.card {
+  background: rgba(8, 15, 56, 0.9);
+  border: 1px solid rgba(25, 227, 255, 0.22);
+  border-radius: 28px;
+  box-shadow: var(--shadow);
+}
+
+.hero {
+  padding: 28px;
+}
+
+.hero h2 {
+  font-family: "Orbitron", sans-serif;
+  font-size: 46px;
+  color: var(--yellow);
+}
+
+.hero p {
+  color: var(--muted);
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+.video-card {
+  margin-top: 26px;
+  padding: 28px;
+}
+
+.video-box {
+  position: relative;
+  width: 100%;
+  padding-bottom: 50%;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #101010;
+}
+
+.video-box iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.summary-card {
+  margin-top: 26px;
+  padding: 28px;
+}
+
+.summary-card h3 {
+  font-family: "Orbitron", sans-serif;
+  font-size: 28px;
+  color: var(--cyan);
+}
+
+.summary-card p,
+.summary-card li {
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.summary-card ul {
+  margin-top: 12px;
+  padding-left: 24px;
+}
+
+.progress-head {
+  margin-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 18px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-top: 12px;
+}
+
+.progress-fill {
+  width: 72%;
+  height: 100%;
+  background: linear-gradient(90deg, #5cf5cc, #37dfff);
+  border-radius: 999px;
+}
+
+.btn-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 26px;
+}
+
+.outline-btn,
+.primary-btn,
+.success-btn {
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: "Rajdhani", sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  border-radius: 18px;
+  padding: 16px 22px;
+}
+
+.outline-btn {
+  background: rgba(8, 15, 56, 0.9);
+  color: var(--text);
+  border: 1px solid rgba(25, 227, 255, 0.3);
+}
+
+.primary-btn {
+  background: linear-gradient(90deg, #32d9ff, #b050ff);
+  color: #081024;
+}
+
+.success-btn {
+  background: linear-gradient(90deg, #67f7cf, #32d9ff);
+  color: #081024;
+}
+
+@media (max-width: 1100px) {
+  .sidebar {
+    display: none;
+  }
+}

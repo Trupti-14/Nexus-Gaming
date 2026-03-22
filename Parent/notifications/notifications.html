@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Parent Notifications - Nexus Arena</title>
+  <link rel="stylesheet" href="notifications.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="notifications-layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <h2>Nexus <span>Arena</span></h2>
+      </div>
+
+      <nav class="sidebar-menu">
+  <a href="../dashboard/dashboard.html" class="menu-item">🏠 Dashboard</a>
+  <a href="../progress/progress.html" class="menu-item">📈 Child Progress Detail</a>
+  <a href="../guidance/guidance.html" class="menu-item">📘 Parent Awareness / Guidance</a>
+</nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+      <!-- Top Navbar -->
+      <header class="top-navbar glass-card">
+        <div class="navbar-left">
+          <h1 class="brand-title">NOTIFICATIONS</h1>
+        </div>
+
+        <div class="navbar-right">
+          <button class="nav-btn active-btn" id="notificationBtn">🔔</button>
+          <button class="nav-btn" id="settingsBtn">⚙️</button>
+
+          <div class="parent-profile-mini" onclick="goToProfile()" style="cursor: pointer;">
+  <div class="avatar-mini" id="avatarLetter">P</div>
+  <div>
+    <h3 id="topParentName">Parent Name</h3>
+    <p>Support Child Learning</p>
+  </div>
+</div>
+
+          <button class="logout-btn" id="logoutBtn">Logout</button>
+        </div>
+      </header>
+
+      <!-- Hero Section -->
+      <section class="hero-card glass-card">
+        <div class="hero-left">
+          <h2>STAY UPDATED WITH EVERY LEARNING STEP</h2>
+          <p>
+            View child activity alerts, achievements, and teacher messages in one place.
+            Filter updates quickly and keep track of important learning moments.
+          </p>
+          <div class="hero-tags">
+            <span>Activity Alerts</span>
+            <span>Achievements</span>
+            <span>Teacher Messages</span>
+          </div>
+        </div>
+        <div class="hero-right">
+          <div class="hero-icon">🔔</div>
+        </div>
+      </section>
+
+      <!-- Filters -->
+      <section class="section-card glass-card">
+        <div class="filter-row">
+          <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="achievements">Achievements</button>
+            <button class="filter-btn" data-filter="messages">Messages</button>
+          </div>
+
+          <div class="filter-actions">
+            <button class="secondary-btn" id="markAllReadBtn">Mark All as Read</button>
+            <button class="secondary-btn" id="clearReadBtn">Clear Read</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Notification Stats -->
+      <section class="stats-section">
+        <div class="stat-card glass-card">
+          <div class="stat-icon">📢</div>
+          <div>
+            <h3 id="totalNotifications">6</h3>
+            <p>Total Notifications</p>
+          </div>
+        </div>
+
+        <div class="stat-card glass-card">
+          <div class="stat-icon">🏅</div>
+          <div>
+            <h3 id="achievementCount">2</h3>
+            <p>Achievements</p>
+          </div>
+        </div>
+
+        <div class="stat-card glass-card">
+          <div class="stat-icon">💬</div>
+          <div>
+            <h3 id="messageCount">2</h3>
+            <p>Teacher Messages</p>
+          </div>
+        </div>
+
+        <div class="stat-card glass-card">
+          <div class="stat-icon">✅</div>
+          <div>
+            <h3 id="unreadCount">4</h3>
+            <p>Unread</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Notifications List -->
+      <section class="section-card glass-card">
+        <div class="section-header">
+          <h2>Notification List</h2>
+        </div>
+
+        <div class="notifications-list" id="notificationsList">
+          <!-- JS will render notifications here -->
+        </div>
+      </section>
+
+      <div id="messageBox" class="message-box"></div>
+    </main>
+  </div>
+
+  <script src="notifications.js"></script>
+</body>
+</html>
